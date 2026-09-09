@@ -1,51 +1,34 @@
 package fenixv.aps4;
 
-public class QuickSort
-{
-    public static int[] sort(int matriz[])
-    {
-        int pivo = 0; // Define o indice incial do pivo.
-        int matrizCentral[] = new int [matriz.length];// matriz com o indice 
-        int matrizAuxilio[] = new int [matriz.length];// matriz de cola
-        
-        for (int k = 0; k < matriz.length; k++)
-        {
-            int cont = 0; 
-            for (int i = 0; i < matriz.length; i++){// pula o pivo
-                if (matrizCentral[i] != 0){
-                   i++;
-                }else{
-                    pivo = i;
-                }
-            } 
+public class QuickSort{
+    
+    public static int[] sort(int matriz[]) {
+        quickSort(matriz, 0, matriz.length - 1);
+        return matriz;
+    }
 
-            for (int i = 0; i < matriz.length; i++){ // menor que
-                if (matriz[i] < matriz[pivo]){
-                    matrizAuxilio[cont] = matriz[i];
-                    cont++;
-                }
-            }
-
-            for (int i = 0; i < matriz.length; i++){ // Indice central
-                if (matriz[i] == matriz[pivo]){
-                    matrizAuxilio[cont] = matriz[pivo];// Lugar do pivo
-                    matrizCentral[cont] = cont+1;
-                    cont++;
-                }
-            }
-
-            for (int i = 0; i < matriz.length; i++){ // maior que
-                if (matriz[i] > matriz[pivo]){
-                    matrizAuxilio[cont] = matriz[i];
-                    cont++;
-                }
-            }
-
-            for (int i = 0; i < matriz.length; i++){// cola na matriz central
-                matriz[i] = matrizAuxilio[i];
-            }
-
+    private static void quickSort(int matriz[], int inicio, int fim) {
+        if (inicio >= fim) {
+            return;
         }
-        return matrizAuxilio;
+
+        int pivo = matriz[fim];
+        int cont = inicio;
+
+        for (int i = inicio; i < fim; i++) {
+            if (matriz[i] <= pivo) {
+                int auxiliar = matriz[i];
+                matriz[i] = matriz[cont];
+                matriz[cont] = auxiliar;
+                cont++;
+            }
+        }
+
+        int auxiliar = matriz[cont];
+        matriz[cont] = matriz[fim];
+        matriz[fim] = auxiliar;
+
+        quickSort(matriz, inicio, cont - 1);
+        quickSort(matriz, cont + 1, fim);
     }
 }

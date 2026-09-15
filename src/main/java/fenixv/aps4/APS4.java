@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class APS4
 {
-    public static int tamanho = 10;
+    public static int tamanho = 20;
     public static int Aleatoriedade = 100;
 
     public static void main(String[] args)
@@ -23,24 +23,34 @@ public class APS4
         System.out.println("1 - QuickSort\n2 - MergeSort\n");
         System.out.print("Escolha o Algoritmo: ");
         
-        switch (sc.nextInt())
+        int input = sc.nextInt();
+        boolean success = false;
+        int result[] = new int[tamanho];
+        long start_time = System.nanoTime();
+        switch(input)
         {
             case 1:
-                int Sucesso[] = QuickSort.sort(numeros);
-                for (int i = 0; i < Sucesso.length; i++){
-                    System.out.print(Sucesso[i] + " ");
-                }
+                result = QuickSort.sort(numeros);
+                success = true;
                 break;
             
             case 2:
-                int result [] = MergeSort.sort(numeros);
-                for (int i = 0; i < result.length; i++){
-                    System.out.print(result[i] + " ");
-                }
+                result = MergeSort.sort(numeros);
+                success = true;
                 break;
         
             default:
                 break;
         }
+        
+        long end_time = System.nanoTime();
+        if (success){
+            for (int i = 0; i < result.length; i++){
+                System.out.print(result[i] + " ");
+            }
+            long elapsed = (end_time - start_time);
+            System.out.println("\nTempo da operação: " + elapsed + "ns (" + elapsed * 0.000001 + "ms)");
+        }
+        else System.out.println("Erro.");
     }
 }

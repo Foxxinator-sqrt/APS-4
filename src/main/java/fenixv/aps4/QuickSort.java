@@ -2,12 +2,14 @@ package fenixv.aps4;
 
 import java.util.Scanner;
 
+
+// 1º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 0)
 public class QuickSort {
 
     static int movimentacoes = 0;
     static int comparacoes = 0;
 
-    public static Integer[][] executar(Integer[][] matriz, Integer[] elementos, int quantidade) {
+    public static Integer[][] executar(Integer[][] matriz, int quantidade) {
         Scanner sc = new Scanner(System.in);
 
         Integer[] v = {45, 0, 9, 8, 1, 9, 7, 1, -1, 9};
@@ -34,49 +36,20 @@ public class QuickSort {
         System.out.printf("\nTempo: %.3fms%n", (tempo / 1_000_000.0));
         System.out.println("Movimentações: " + movimentacoes);
         System.out.println("Comparações: " + comparacoes);
-
-        System.out.print("\nDigite qualquer tecla: ");
-        String tecla = sc.nextLine();
-
-        System.out.println("\033[H\033[2J");
-
-        elementos[0] = (int) tempo;
-        elementos[1] = movimentacoes;
-        elementos[2] = comparacoes;
-
-        if (quantidade == 1000) {
-            matriz[0][0] = elementos[0];
-            matriz[0][1] = elementos[1];
-            matriz[0][2] = elementos[2];
-            return matriz;
+        
+        int offset = 0;
+        switch (quantidade){
+            case 10000 -> offset = 3;
+            case 100000 -> offset = 6;
+            case 500000 -> offset = 9;
+            case 1000000 -> offset = 12;
+            default -> {
+            }
         }
-        else if (quantidade == 10000) {
-            matriz[0][3] = elementos[0];
-            matriz[0][4] = elementos[1];
-            matriz[0][5] = elementos[2];
-            return matriz;
-        }
-        else if (quantidade == 100000) {
-            matriz[0][6] = elementos[0];
-            matriz[0][7] = elementos[1];
-            matriz[0][8] = elementos[2];
-            return matriz;
-        }
-        else if (quantidade == 500000) {
-            matriz[0][9] = elementos[0];
-            matriz[0][10] = elementos[1];
-            matriz[0][11] = elementos[2];
-            return matriz;
-        }
-        else if (quantidade == 1000000) {
-            matriz[0][12] = elementos[0];
-            matriz[0][13] = elementos[1];
-            matriz[0][14] = elementos[2];
-            return matriz;
-        }
-        else {
-            return matriz;
-        }
+        matriz[0][offset] = (int)tempo;
+        matriz[0][offset + 1] = movimentacoes;
+        matriz[0][offset + 2] = comparacoes;
+        return matriz;
     }
 
     public static void quickSort(Integer[] matriz, int inicio, int fim) {

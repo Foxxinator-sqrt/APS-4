@@ -1,17 +1,21 @@
 package fenixv.aps4;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.io.FileReader;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Scanner;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import com.opencsv.exceptions.CsvValidationException;
 
-interface Executando<A, B, R> {
-    R executar(A a, B b);
-}
+interface Executando<A, B, C, R> { R executar(A a, B b, C c); }
 
-public class APS4 {
-    
-    static Map<Integer, Executando<Integer[][], Integer, Integer[][]>> algortimos = new HashMap<>();
+public class APS4
+{
+    static Map<Integer, Executando<Integer[][], Integer, Integer[], Integer[][]>> algortimos = new HashMap<>();
     static {
         algortimos.put(1, QuickSort::executar);
         algortimos.put(2, MergeSort::executar);
@@ -20,8 +24,8 @@ public class APS4 {
         algortimos.put(5, InsertionSort::executar);
     }
     
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws IOException, CsvValidationException
+    {
         Scanner sc = new Scanner(System.in);
         Integer[][] todosElementos = new Integer[5][15];
         
@@ -60,8 +64,8 @@ public class APS4 {
         sc.close();
     }
     
-    public static void quantidadeElementos(Scanner sc, int opcao, Integer[][] matriz){
-        
+    public static void quantidadeElementos(Scanner sc, int opcao, Integer[][] matriz) throws IOException, CsvValidationException
+    {
         System.out.println("\nEscolha a capacidade\n");
         System.out.println(" [1] - 1.000 elementos");
         System.out.println(" [2] - 10.000 elementos");
@@ -83,8 +87,8 @@ public class APS4 {
                 case 6 -> {return;}
                 default -> System.out.println("\nOpção Inválida\n");
             }
-            // -----> INSERIR CÓDIGO PARA GERAR OS VETORES AQUI  <-----
-            algortimos.get(opcao).executar(matriz, capacidade);
+            Integer[] vetor = lerCSV(capacidade);
+            algortimos.get(opcao).executar(matriz, capacidade, vetor);
         }
         catch(InputMismatchException e){
             System.out.println("\nError: A opção deve ser inteiro!");
@@ -92,8 +96,8 @@ public class APS4 {
         }
     }
 
-    public static void exibir(Scanner sc, Integer[][] matriz){
-        
+    public static void exibir(Scanner sc, Integer[][] matriz)
+    {
         do {
             System.out.println("\nEscolha o tamanho para visualizar todos os algoritmos\n");
             System.out.println(" [1] - 1.000 elementos");
@@ -114,7 +118,10 @@ public class APS4 {
                     case 4 -> exibirTamanho = "500.000";
                     case 5 -> exibirTamanho = "1.000.000";
                     case 6 -> {return;}
-                    default -> System.out.println("\nOpção inválida\n");
+                    default -> {
+                        System.out.println("\nOpção inválida\n");
+                        return;
+                    }
                 }
                 opcao = 3 * (opcao - 1);
                 
@@ -135,7 +142,6 @@ public class APS4 {
                     System.out.println("Movimentações: " + (matriz[i][opcao + 1] != null ? matriz[i][opcao + 1] : "Sem valor"));
                     System.out.println("Comparações: " + (matriz[i][opcao + 2] != null ? matriz[i][opcao + 2] : "Sem valor") + "\n");
                 }
-                
                 System.out.println("------------------------------------\n");
             }
             catch(InputMismatchException e){
@@ -144,5 +150,27 @@ public class APS4 {
             }
         }
         while(true);
+    }
+    
+    public static Integer[] lerCSV(int tamanho) throws IOException, CsvValidationException
+    {
+        CSVReader reader;
+        try {reader = new CSVReaderBuilder(new FileReader("numeros.csv")).build();}
+        catch (FileNotFoundException ex){
+            System.out.println("Conjunto de números não encontrado.");
+            System.exit(0);
+            return null;
+        }
+        
+        Integer[] arr = new Integer[tamanho];
+        String[] numbers = reader.readNext();
+        System.out.println("Generated array of size: " + tamanho);
+        System.out.println("Size of read array: " + numbers.length);
+        for (int i = 0; i < tamanho; i++){
+            //System.out.print(numbers[i] + ", ");
+            arr[i] = Integer.valueOf(numbers[i]);
+        }
+        System.out.println("Vetor carregado: " + tamanho);
+        return arr;
     }
 }

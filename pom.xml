@@ -10,4 +10,11 @@
         <maven.compiler.release>26</maven.compiler.release>
         <exec.mainClass>fenixv.aps4.APS4</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.5.2</version>
+        </dependency>
+    </dependencies>
 </project>

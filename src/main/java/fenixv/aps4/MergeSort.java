@@ -1,32 +1,28 @@
 package fenixv.aps4;
 
-import java.util.Scanner;
-
-
 // 2º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 1)
 public class MergeSort {
 
     static int movimentacoes = 0;
     static int comparacoes = 0;
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade){
-        Scanner sc = new Scanner(System.in);
-        Integer[] v = {45, 0, 9, 8, 1, 9, 7, 1, -1, 9};
-        int[] w = new int[v.length];
+    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor)
+    {
+        int[] w = new int[vetor.length];
 
         movimentacoes = 0;
         comparacoes = 0;
 
         long inicio = System.nanoTime();
-
-        mergeSort(v, w, 0, v.length - 1);
-
+        mergeSort(vetor, w, 0, vetor.length - 1);
         long fim = System.nanoTime();
         
+        /*
         System.out.println();
-        for (int n : v) {
+        for (int n : vetor) {
             System.out.print(n + " ");
         }
+        */
 
         System.out.println();
         long tempo = (fim - inicio);

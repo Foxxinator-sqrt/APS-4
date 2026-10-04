@@ -1,33 +1,25 @@
 package fenixv.aps4;
 
-import java.util.Scanner;
-
-
 // 1º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 0)
 public class QuickSort {
 
     static int movimentacoes = 0;
     static int comparacoes = 0;
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade) {
-        Scanner sc = new Scanner(System.in);
-
-        Integer[] v = {45, 0, 9, 8, 1, 9, 7, 1, -1, 9};
-
+    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor) {
         movimentacoes = 0;
         comparacoes = 0;
 
         long inicio = System.nanoTime();
-
-        quickSort(v, 0, v.length - 1);
-
+        quickSort(vetor, 0, vetor.length - 1);
         long fim = System.nanoTime();
 
+        /*
         System.out.println();
-
-        for (int n : v) {
+        for (int n : vetor) {
             System.out.print(n + " ");
         }
+        */
 
         System.out.println();
 
@@ -52,26 +44,23 @@ public class QuickSort {
         return matriz;
     }
 
-    public static void quickSort(Integer[] matriz, int inicio, int fim) {
-
-        if (inicio >= fim) {
+    public static void quickSort(Integer[] matriz, int inicio, int fim)
+    {
+        if (inicio >= fim)
             return;
-        }
 
         int pivo = matriz[fim];
         int cont = inicio;
 
         for (int i = inicio; i < fim; i++) {
-
             comparacoes++;
-
+            
             if (matriz[i] <= pivo) {
                 int auxiliar = matriz[i];
                 matriz[i] = matriz[cont];
                 matriz[cont] = auxiliar;
 
                 movimentacoes++;
-
                 cont++;
             }
         }

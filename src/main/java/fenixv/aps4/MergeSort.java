@@ -104,7 +104,7 @@ public class MergeSort {
                 movimentacoes++;
 
             }
-            // Caso contrario. vai comparar os valores.
+            // Caso contrário. vai comparar os valores.
             else{
                 comparacoes++;
 

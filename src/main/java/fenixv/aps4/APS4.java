@@ -36,9 +36,9 @@ public class APS4
     
     public static void main(String[] args) throws IOException, CsvValidationException
     {
-         // Foi criado o scanner.
+        // Foi criado o scanner.
         Scanner sc = new Scanner(System.in);
-        // Guarda os resultados como  uma forma de matriz[5][15].
+        // Guarda os resultados como uma forma de matriz[5][15].
         // 5 linhas representam os 5 algoritmos e 15 colunas representam os resultados de cada capacidade de forma organizada.
         Integer[][] todosElementos = new Integer[5][15];
         
@@ -105,8 +105,8 @@ public class APS4
         try {
             // Pega o tamanho escolhido pelo usuário.
             int tamanhoCapacidade = sc.nextInt();
-            // Uma variável que será atualizada quando usuário escolher a capaciadade para continuar o programa.
-            //  Quando voltar o método, a variável será 0 novamente.
+            // Uma variável que será atualizada quando usuário escolher a capacidade para continuar o programa.
+            // Quando voltar o método, a variável será 0 novamente.
             int capacidade = 0;
             switch (tamanhoCapacidade){
                 case 1 -> capacidade = 1000;
@@ -190,7 +190,7 @@ public class APS4
     
     public static Integer[] lerCSV(int tamanho) throws IOException, CsvValidationException
     {
-        // Lê os números do arquivo CSV na raiz projeto e coloca no vetor com o tamanho escolhido pelo usuário de forma automática.
+        // Lê os números do arquivo CSV na raiz do projeto e coloca no vetor com o tamanho escolhido pelo usuário de forma automática.
         CSVReader reader;
         try {reader = new CSVReaderBuilder(new FileReader("numeros.csv")).build();}
         catch (FileNotFoundException ex){

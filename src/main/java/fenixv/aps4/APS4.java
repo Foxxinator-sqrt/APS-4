@@ -172,7 +172,7 @@ public class APS4
                         case 3: System.out.println("--------------TimSort-------------\n"); break;
                         case 4: System.out.println("--------------InsertionSort-------------\n"); break;
                     }
-                    // Mostra os resultados se tiver algum valor. Caso contrários, será exibido "sem valor".
+                    // Mostra os resultados se tiver algum valor. Caso contrário, será exibido "sem valor".
                     if (matriz[i][opcao] != null) System.out.printf("Tempo: %.3f ms%n", matriz[i][opcao] / 1_000_000.0);
                     else System.out.println("Tempo: Sem valor");
                     System.out.println("Movimentações: " + (matriz[i][opcao + 1] != null ? matriz[i][opcao + 1] : "Sem valor"));

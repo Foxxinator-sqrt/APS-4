@@ -19,12 +19,12 @@ public class QuickSort {
         long fim = System.nanoTime();
 
         // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo QuickSoft.
-        /*
-        System.out.println();
-        for (int n : vetor) {
-            System.out.print(n + " ");
+        if (quantidade < 1001){
+            System.out.println();
+            for (int n : vetor) {
+                System.out.print(n + " ");
+            }
         }
-        */
 
         // Exibe os resultados obtidos durante a execução do algoritmo.
         // A quantidade de movimentações realizadas e a quantidade de comparações ao total.

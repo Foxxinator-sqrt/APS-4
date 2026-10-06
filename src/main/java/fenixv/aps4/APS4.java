@@ -65,8 +65,6 @@ public class APS4
                 // Verifica se escolheu um algoritmo de forma válida.
                 if (opcao > 0 && opcao < 6){
                     quantidadeElementos(sc, opcao, todosElementos);
-                    System.out.print("\nPressione [Enter] para retornar.");
-                    sc.nextLine();
                     sc.nextLine();
                     
                     // Limpa a tela.
@@ -123,6 +121,8 @@ public class APS4
             // Executa o algoritmo escolhido pela chave para acessar o nome do método algoritmo.
             // Executar é definido pela interface no início do código com os parâmetros definidos.
             algortimos.get(opcao).executar(matriz, capacidade, vetor);
+            System.out.print("\nPressione [Enter] para retornar.");
+            sc.nextLine();
         }
         catch(InputMismatchException e){
             System.out.println("\nError: A opção deve ser inteiro!");
@@ -201,15 +201,12 @@ public class APS4
         
         Integer[] arr = new Integer[tamanho];
         String[] numbers = reader.readNext();
-        System.out.println("Generated array of size: " + tamanho);
-        System.out.println("Size of read array: " + numbers.length);
         for (int i = 0; i < tamanho; i++){
-            //System.out.print(numbers[i] + ", ");
             arr[i] = Integer.valueOf(numbers[i]);
         }
-        System.out.println("Vetor carregado: " + tamanho);
         return arr;
     }
+    
     // Configura o programa para exibir corretamente caracteres especiais usando UTF-8 de forma manual nas saídas (out) e os erros (err).
     public static void executandoUTF(){
         System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8));

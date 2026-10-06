@@ -20,12 +20,12 @@ public class HeapSort
         long fim = System.nanoTime();
 
          // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo QuickSoft.
-        /*
-        System.out.println();
-        for (int n : vetor) {
-            System.out.print(n + " ");
+        if (quantidade < 1001){
+            System.out.println();
+            for (int n : vetor) {
+                System.out.print(n + " ");
+            }
         }
-        */
         
         // Exibe os resultados obtidos durante a execução do algoritmo.
         // A quantidade de movimentações realizadas e a quantidade de comparações ao total.
@@ -55,6 +55,7 @@ public class HeapSort
         return matriz;
     }
     
+    // Chama a função para cada valor no vetor, e então inverte o vetor no final.
     static Integer[] heapSort(Integer arr[]){
         int length = arr.length;
         
@@ -72,6 +73,8 @@ public class HeapSort
         return arr;
     }
     
+    // Forma a estrutura de pilha dentro do vetor, e compara as duas "crianças" criadas com seu pai,
+    // caso uma seja maior que o pai, ela é trocada, e a função é chamada novamente.
     static void heapify(Integer arr[], int length, int index){
         int largest = index;
         int l = 2 * index + 1;

@@ -16,16 +16,16 @@ public class InsertionSort {
         long inicio = System.nanoTime();
         // Executando o algoritmo de InsertionSort.
         insertionSorf(vetor, quantidade);
-         // Finalizando a contagem do tempo de execução.
+        // Finalizando a contagem do tempo de execução.
         long fim = System.nanoTime();
 
-         // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo InsertionSort.
-         /*
-        System.out.println();
-        for (int n : vetor) {
-            System.out.print(n + " ");
+        // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo InsertionSort.
+        if (quantidade < 1001){
+            System.out.println();
+            for (int n : vetor) {
+                System.out.print(n + " ");
+            }
         }
-        */
 
         // Exibe os resultados obtidos durante a execução do algoritmo.
         // A quantidade de movimentações realizadas e a quantidade de comparações ao total.

@@ -7,7 +7,7 @@ public class HeapSort
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor)
+    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor)
     {
         movimentacoes = 0;
         comparacoes = 0;
@@ -56,7 +56,7 @@ public class HeapSort
     }
     
     // Chama a função para cada valor no vetor, e então inverte o vetor no final.
-    static Integer[] heapSort(Integer arr[]){
+    static int[] heapSort(int arr[]){
         int length = arr.length;
         
         for (int i = length / 2 - 1; i >= 0; i--)
@@ -75,7 +75,7 @@ public class HeapSort
     
     // Forma a estrutura de pilha dentro do vetor, e compara as duas "crianças" criadas com seu pai,
     // caso uma seja maior que o pai, ela é trocada, e a função é chamada novamente.
-    static void heapify(Integer arr[], int length, int index){
+    static void heapify(int arr[], int length, int index){
         int largest = index;
         int l = 2 * index + 1;
         int r = 2 * index + 2;

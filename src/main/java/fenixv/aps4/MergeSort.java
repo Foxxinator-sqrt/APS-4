@@ -7,7 +7,7 @@ public class MergeSort {
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor)
+    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor)
     {
         int[] listaInicial = new int[vetor.length]; // Um novo objeto é instanciado com tamanho exato de elementos dentro da Lista Inicial (vetor).
 
@@ -58,7 +58,7 @@ public class MergeSort {
     }
 
     //Metodo MergeSort.
-    public static void mergeSort(Integer[] vetor, int[] listaInicial, int inicio, int fim){
+    public static void mergeSort(int[] vetor, int[] listaInicial, int inicio, int fim){
         // Verifica se o início é menor do que o fim para dividir.
         if (inicio < fim) {
             // Calcula o meio entre o início e o fim.
@@ -75,7 +75,7 @@ public class MergeSort {
         }
     }
 
-    public static void insert(Integer[] vetor, int[] listaInicial, int inicio, int meio, int fim){
+    public static void insert(int[] vetor, int[] listaInicial, int inicio, int meio, int fim){
 
         // Copia os valores de vetor para Lista Inicial.
         for(int k = inicio; k <= fim; k++){

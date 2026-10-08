@@ -1,38 +1,21 @@
 package fenixv.aps4;
 
-import java.io.FileReader;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Scanner;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.util.InputMismatchException;
-import com.opencsv.exceptions.CsvValidationException;
+import java.io.FileReader;
 import java.io.PrintStream;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
-
-
-// A interface define os métodos que cada classe deve implementar, usando os tipos genéricos A, B e C como parâmetros e R como tipo de retorno.
-// A interface Executando é implementado na bliblioteca Map e HashMap que são Dicionário ou Mapa que serve para chamar os metodos correpondente de cada algoritmo.
-// O dicionário funciona como chave para acessar o valor.
-interface Executando<A, B, C, R> { R executar(A a, B b, C c); }
+import java.util.InputMismatchException;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
 
 public class APS4
 {
-    // É definido dicionário com os parâmentros.
-    // Guarda os algoritmos com suas chaves que retorna os nomes dos algoritmos e os parâmentros que devem seguir.
-    static Map<Integer, Executando<Integer[][], Integer, Integer[], Integer[][]>> algortimos = new HashMap<>();
-    static {
-        algortimos.put(1, QuickSort::executar);
-        algortimos.put(2, MergeSort::executar);
-        algortimos.put(3, HeapSort::executar);
-        algortimos.put(4, TimSort::executar);
-        algortimos.put(5, InsertionSort::executar);
-    }
+    static int[] numeros;
     
     public static void main(String[] args) throws IOException, CsvValidationException
     {
@@ -40,12 +23,11 @@ public class APS4
         Scanner sc = new Scanner(System.in);
         // Guarda os resultados como uma forma de matriz[5][15].
         // 5 linhas representam os 5 algoritmos e 15 colunas representam os resultados de cada capacidade de forma organizada.
-        Integer[][] todosElementos = new Integer[5][15];
+        int[][] todosElementos = new int[5][15];
+        numeros = lerCSV();
         
         boolean ativo = true;
-        
-        // Arruma os caracteres especiais.
-        executandoUTF();
+        executandoUTF();  // Arruma os caracteres especiais.
         
         while(ativo){
             System.out.println("-------------Algoritmos------------");
@@ -66,16 +48,11 @@ public class APS4
                 if (opcao > 0 && opcao < 6){
                     quantidadeElementos(sc, opcao, todosElementos);
                     sc.nextLine();
-                    
-                    // Limpa a tela.
-                    System.out.println("\033[H\033[2J");
+                    System.out.println("\033[H\033[2J");  // Limpa a tela.
                 }
-                // Mostra os resultados.
-                else if (opcao == 6) exibir(sc, todosElementos);
-                // Sai do programa
-                else if (opcao == 7) ativo = false;
-                // Mostra que a opção não existe.
-                else System.out.println("\nOpção inválida\n");
+                else if (opcao == 6) exibir(sc, todosElementos);  // Mostra os resultados.
+                else if (opcao == 7) ativo = false;  // Sai do programa
+                else System.out.println("\nOpção inválida\n");  // Mostra que a opção não existe.
             }
             catch(InputMismatchException e){
                 System.out.println("\nError: A opção deve ser inteiro!");
@@ -89,7 +66,7 @@ public class APS4
         sc.close();
     }
     
-    public static void quantidadeElementos(Scanner sc, int opcao, Integer[][] matriz) throws IOException, CsvValidationException
+    public static void quantidadeElementos(Scanner sc, int opcao, int[][] matriz) throws IOException, CsvValidationException
     {
         System.out.println("\nEscolha a capacidade\n");
         System.out.println(" [1] - 1.000 elementos");
@@ -112,15 +89,23 @@ public class APS4
                 case 3 -> capacidade = 100000;
                 case 4 -> capacidade = 500000;
                 case 5 -> capacidade = 1000000;
-                // Volta para o menu.
-                case 6 -> {return;}
+                case 6 -> {return;}  // Volta para o menu.
                 default -> System.out.println("\nOpção Inválida\n");
             }
             // Carrega os números do CSV.
-            Integer[] vetor = lerCSV(capacidade);
+            int[] vetor = new int[capacidade];
+            for (int i = 0; i < capacidade; i++){
+                vetor[i] = numeros[i];
+            }
+            
             // Executa o algoritmo escolhido pela chave para acessar o nome do método algoritmo.
-            // Executar é definido pela interface no início do código com os parâmetros definidos.
-            algortimos.get(opcao).executar(matriz, capacidade, vetor);
+            switch (opcao){
+                case 1 -> QuickSort.executar(matriz, capacidade, vetor);
+                case 2 -> MergeSort.executar(matriz, capacidade, vetor);
+                case 3 -> HeapSort.executar(matriz, capacidade, vetor);
+                case 4 -> TimSort.executar(matriz, capacidade, vetor);
+                case 5 -> InsertionSort.executar(matriz, capacidade, vetor);
+            }
             System.out.print("\nPressione [Enter] para retornar.");
             sc.nextLine();
         }
@@ -131,7 +116,7 @@ public class APS4
         }
     }
 
-    public static void exibir(Scanner sc, Integer[][] matriz)
+    public static void exibir(Scanner sc, int[][] matriz)
     {
         // Mostra os resultados dos algoritmos organizados em matriz.
         do {
@@ -163,7 +148,6 @@ public class APS4
                 
                 System.out.println("\n---------------Tabelas--------------\n");
                 System.out.println("         " + exibirTamanho + " elementos\n");
-                
                 for (int i = 0; i < 5; i++){
                     switch(i){
                         case 0: System.out.println("--------------QuickSort-------------\n"); break;
@@ -173,10 +157,10 @@ public class APS4
                         case 4: System.out.println("--------------InsertionSort-------------\n"); break;
                     }
                     // Mostra os resultados se tiver algum valor. Caso contrário, será exibido "sem valor".
-                    if (matriz[i][opcao] != null) System.out.printf("Tempo: %.3f ms%n", matriz[i][opcao] / 1_000_000.0);
+                    if (matriz[i][opcao] != 0) System.out.printf("Tempo: %.3f ms%n", matriz[i][opcao] / 1_000_000.0);
                     else System.out.println("Tempo: Sem valor");
-                    System.out.println("Movimentações: " + (matriz[i][opcao + 1] != null ? matriz[i][opcao + 1] : "Sem valor"));
-                    System.out.println("Comparações: " + (matriz[i][opcao + 2] != null ? matriz[i][opcao + 2] : "Sem valor") + "\n");
+                    System.out.println("Movimentações: " + (matriz[i][opcao + 1] != 0 ? matriz[i][opcao + 1] : "Sem valor"));
+                    System.out.println("Comparações: " + (matriz[i][opcao + 2] != 0 ? matriz[i][opcao + 2] : "Sem valor") + "\n");
                 }
                 System.out.println("------------------------------------\n");
             }
@@ -188,7 +172,7 @@ public class APS4
         while(true);
     }
     
-    public static Integer[] lerCSV(int tamanho) throws IOException, CsvValidationException
+    public static int[] lerCSV() throws IOException, CsvValidationException
     {
         // Lê os números do arquivo CSV na raiz do projeto e coloca no vetor com o tamanho escolhido pelo usuário de forma automática.
         CSVReader reader;
@@ -199,9 +183,9 @@ public class APS4
             return null;
         }
         
-        Integer[] arr = new Integer[tamanho];
+        int[] arr = new int[1000000];
         String[] numbers = reader.readNext();
-        for (int i = 0; i < tamanho; i++){
+        for (int i = 0; i < 1000000; i++){
             arr[i] = Integer.valueOf(numbers[i]);
         }
         return arr;

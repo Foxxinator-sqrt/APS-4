@@ -7,7 +7,7 @@ public class InsertionSort {
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor) {
+    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor) {
 
         movimentacoes = 0;
         comparacoes = 0;
@@ -60,7 +60,7 @@ public class InsertionSort {
     }
 
     //Metodo insertionSort.
-    public static void insertionSorf(Integer[] lista, int quantidade) {
+    public static void insertionSorf(int[] lista, int quantidade) {
 
         //"quantidade" e o tamanho da lista definida pelo usuario.
         //Organizando a lista.

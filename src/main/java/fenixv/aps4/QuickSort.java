@@ -7,7 +7,7 @@ public class QuickSort {
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static Integer[][] executar(Integer[][] matriz, int quantidade, Integer[] vetor) {
+    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor) {
         movimentacoes = 0;
         comparacoes = 0;
 
@@ -54,7 +54,7 @@ public class QuickSort {
         return matriz;
     }
 
-    public static void quickSort(Integer[] vetor, int inicio, int fim)
+    public static void quickSort(int[] vetor, int inicio, int fim)
     {
         // Verifica se o início é maior ou igual ao fim. Se caso for, o método será fechado com return.
         if (inicio >= fim)

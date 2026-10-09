@@ -19,7 +19,7 @@ public class HeapSort
         // Finalizando a contagem do tempo de execução.
         long fim = System.nanoTime();
 
-         // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo QuickSoft.
+         // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo HeapSort.
         if (quantidade < 1001){
             System.out.println();
             for (int n : vetor) {

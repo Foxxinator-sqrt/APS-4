@@ -1,4 +1,4 @@
-package fenixv.aps4;
+package fenixv.algoritmos;
 
 // 5º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 4)
 public class InsertionSort {
@@ -7,7 +7,7 @@ public class InsertionSort {
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor) {
+    public static void executar(int[][] matriz, int quantidade, int[] vetor){
 
         movimentacoes = 0;
         comparacoes = 0;
@@ -55,8 +55,6 @@ public class InsertionSort {
         matriz[4][offset] = (int) tempo;
         matriz[4][offset + 1] = movimentacoes;
         matriz[4][offset + 2] = comparacoes;
-        // Retorna a matriz contendo os resultados do algoritmo pelo os números de elementos definidos.
-        return matriz;
     }
 
     //Metodo insertionSort.

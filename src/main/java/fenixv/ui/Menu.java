@@ -1,14 +1,9 @@
-package interfaceGrafica;
+package fenixv.ui;
 
-import com.opencsv.exceptions.CsvValidationException;
+import fenixv.algoritmos.*;
 import fenixv.aps4.APS4;
-import fenixv.aps4.QuickSort;
-import fenixv.aps4.MergeSort;
-import fenixv.aps4.HeapSort;
-import fenixv.aps4.TimSort;
-import fenixv.aps4.InsertionSort;
 import java.io.IOException;
-// As blibliotecas do nosso código para associar aqui na interface gráfica, Pedro.
+
 public class Menu extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
@@ -16,7 +11,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         
-       // Todos os elementos estão renomeados. Se quiser mudar os nomes para facilitar o entendimento, fique à vontade, Pedro.
+        // Todos os elementos estão renomeados. Se quiser mudar os nomes para facilitar o entendimento, fique à vontade, Pedro.
         
         // O ícone personalizado aparece na janela principal do sistema e também.
         // Se quiser trocar a imagem, é só baixar outra e colocar na pasta Other Sources > resources > imagens.
@@ -33,94 +28,111 @@ public class Menu extends javax.swing.JFrame {
     private int idBotaoAlgoritmo = 0;
     private int idBotaoCapacidade = 0;
     
-     // Esse método funciona quando usuário escolhe qual o algoritmo que ele quer.
+    // Esse método funciona quando usuário escolhe qual o algoritmo que ele quer.
     public void selecionarBotaoAlgoritimos(javax.swing.JButton botaoSelecionado, int idBotaoAlgoritimo){
-         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
-         java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
-         
-         jButtonQuickSort.setBackground(corPadrao);
-         jButtonMergeSort.setBackground(corPadrao);
-         jButtonHeapSort.setBackground(corPadrao);
-         jButtonTimSort.setBackground(corPadrao);
-         jButtonInsertionSort.setBackground(corPadrao);
-         
-         botaoSelecionado.setBackground(corSelecionado);
-         this.idBotaoAlgoritmo = idBotaoAlgoritimo;
+        java.awt.Color corPadrao = new java.awt.Color(255,255,255);
+        java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
+
+        jButtonQuickSort.setBackground(corPadrao);
+        jButtonMergeSort.setBackground(corPadrao);
+        jButtonHeapSort.setBackground(corPadrao);
+        jButtonTimSort.setBackground(corPadrao);
+        jButtonInsertionSort.setBackground(corPadrao);
+
+        botaoSelecionado.setBackground(corSelecionado);
+        this.idBotaoAlgoritmo = idBotaoAlgoritimo;
     }
     
     // Esse método funciona quando usuário escolhe qual a capacidade.
     public void selecionarBotaoCapacidade(javax.swing.JButton botaoSelecionado, int idBotaoCapacidade){
-         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
-         java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
-         
-         jButton1000.setBackground(corPadrao);
-         jButton10000.setBackground(corPadrao);
-         jButton100000.setBackground(corPadrao);
-         jButton500000.setBackground(corPadrao);
-         jButton1000000.setBackground(corPadrao);
-         
-         switch (idBotaoCapacidade){
-             default -> {
-                 break;
-             }
-             case 1 -> {
-                 idBotaoCapacidade = 1000;
-                 break;
-             }
-             case 2 -> {
-                 idBotaoCapacidade = 10000;
-                 break;
-             }
-             case 3 -> {
-                 idBotaoCapacidade = 100000;
-                 break;
-             }
-             case 4 -> {
-                 idBotaoCapacidade = 500000;
-                 break;
-             }
-             case 5 -> {
-                 idBotaoCapacidade = 1000000;
-                 break;
-             }
-         }
-         
-         botaoSelecionado.setBackground(corSelecionado);
-          this.idBotaoCapacidade = idBotaoCapacidade;
+        java.awt.Color corPadrao = new java.awt.Color(255,255,255);
+        java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
+
+        jButton1000.setBackground(corPadrao);
+        jButton10000.setBackground(corPadrao);
+        jButton100000.setBackground(corPadrao);
+        jButton500000.setBackground(corPadrao);
+        jButton1000000.setBackground(corPadrao);
+
+        switch (idBotaoCapacidade){
+            case 1 -> idBotaoCapacidade = 1000;
+            case 2 -> idBotaoCapacidade = 10000;
+            case 3 -> idBotaoCapacidade = 100000;
+            case 4 -> idBotaoCapacidade = 500000;
+            case 5 -> idBotaoCapacidade = 1000000;
+        }
+
+        botaoSelecionado.setBackground(corSelecionado);
+        this.idBotaoCapacidade = idBotaoCapacidade;
     }
     
-    // Aqui deve implementar os resultados os dois botões selecionados.
+    // Executado quando o botão run é pressionado.
     public void executarRun(int idBotaoAlgoritmo, int idBotaoCapacidade){
-        
         if(idBotaoAlgoritmo != 0 && idBotaoCapacidade != 0){
             jLabelMensagemErro.setVisible(false);
-            // Cria o (switch case) ou (if, else if e else) 
-            // Para chamar cada método do algoritmo por id do botão e altera o texto nos resultados bem aqui nesse método que seria o algoritmo.
+            
+            // Executa o algoritmo selecionado pelo usuário.
+            int[] vetor = APS4.gerarVetor(idBotaoCapacidade);
+            switch (idBotaoAlgoritmo){
+                case 1 -> {
+                    QuickSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    jLabelNomeResultado.setText("Quick Sort");
+                }
+                case 2 -> {
+                    MergeSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    jLabelNomeResultado.setText("Merge Sort");
+                }
+                case 3 -> {
+                    HeapSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    jLabelNomeResultado.setText("Heap Sort");
+                }
+                case 4 -> {
+                    TimSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    jLabelNomeResultado.setText("Tim Sort");
+                }
+                case 5 -> {
+                    InsertionSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    jLabelNomeResultado.setText("Insertion Sort");
+                }
+            }
+            
+            int offset = 0;
+            switch (idBotaoCapacidade){
+                case 10000 -> offset = 3;
+                case 100000 -> offset = 6;
+                case 500000 -> offset = 9;
+                case 1000000 -> offset = 12;
+            }
+            
+            // Atualiza os campos de texto com os dados resultantes.
+            jLabelCapacidadeResultado.setText(Integer.toString(idBotaoCapacidade));
+            double tempo = (double) APS4.dados[idBotaoAlgoritmo - 1][offset] / 1_000_000.0;
+            jLabelTempoResultado.setText(String.format("%.3fms%n", tempo));
+            jLabelMovimentacoesResultado.setText(Integer.toString(APS4.dados[idBotaoAlgoritmo - 1][offset + 1]));
+            jLabelComparacoesResultado.setText(Integer.toString(APS4.dados[idBotaoAlgoritmo - 1][offset + 2]));
         }
-        else{
-            jLabelMensagemErro.setVisible(true);
-        }
+        else jLabelMensagemErro.setVisible(true);
     }
     
     // Faz que cores selecionadas voltem para suas cores originais e os ids BotaoAlgoritmo e a capacidade seja 0.
     // Quando clica o botão de cancelar, se clicar no botão run logo depois, aparece a mensagem de erro até selecionar os dois botões.
     public void executarCancelar(){
-         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
-         
-         jButtonQuickSort.setBackground(corPadrao);
-         jButtonMergeSort.setBackground(corPadrao);
-         jButtonHeapSort.setBackground(corPadrao);
-         jButtonTimSort.setBackground(corPadrao);
-         jButtonInsertionSort.setBackground(corPadrao);
-         
-         jButton1000.setBackground(corPadrao);
-         jButton10000.setBackground(corPadrao);
-         jButton100000.setBackground(corPadrao);
-         jButton500000.setBackground(corPadrao);
-         jButton1000000.setBackground(corPadrao);
-         
-         this.idBotaoAlgoritmo = 0;
-         this.idBotaoCapacidade = 0;
+        java.awt.Color corPadrao = new java.awt.Color(255,255,255);
+
+        jButtonQuickSort.setBackground(corPadrao);
+        jButtonMergeSort.setBackground(corPadrao);
+        jButtonHeapSort.setBackground(corPadrao);
+        jButtonTimSort.setBackground(corPadrao);
+        jButtonInsertionSort.setBackground(corPadrao);
+
+        jButton1000.setBackground(corPadrao);
+        jButton10000.setBackground(corPadrao);
+        jButton100000.setBackground(corPadrao);
+        jButton500000.setBackground(corPadrao);
+        jButton1000000.setBackground(corPadrao);
+
+        this.idBotaoAlgoritmo = 0;
+        this.idBotaoCapacidade = 0;
     }
 
     /**
@@ -134,11 +146,11 @@ public class Menu extends javax.swing.JFrame {
 
         PainelAlgoritmos = new javax.swing.JPanel();
         TituloMenu = new javax.swing.JLabel();
-        QuickSort = new javax.swing.JLabel();
-        MergeSort = new javax.swing.JLabel();
-        HeapSort = new javax.swing.JLabel();
-        TimSort = new javax.swing.JLabel();
-        InsertionSort = new javax.swing.JLabel();
+        QuickSortLabel = new javax.swing.JLabel();
+        MergeSortLabel = new javax.swing.JLabel();
+        HeapSortLabel = new javax.swing.JLabel();
+        TimSortLabel = new javax.swing.JLabel();
+        InsertionSortLabel = new javax.swing.JLabel();
         jButtonQuickSort = new javax.swing.JButton();
         jButtonMergeSort = new javax.swing.JButton();
         jButtonHeapSort = new javax.swing.JButton();
@@ -185,78 +197,78 @@ public class Menu extends javax.swing.JFrame {
         TituloMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TituloMenu.setText("Algoritmos");
 
-        QuickSort.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        QuickSort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QuickSort.setText("QuickSort");
+        QuickSortLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        QuickSortLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        QuickSortLabel.setText("QuickSort");
 
-        MergeSort.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MergeSort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MergeSort.setText("MergeSort");
+        MergeSortLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MergeSortLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MergeSortLabel.setText("MergeSort");
 
-        HeapSort.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        HeapSort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeapSort.setText("HeapSort");
+        HeapSortLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        HeapSortLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HeapSortLabel.setText("HeapSort");
 
-        TimSort.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        TimSort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TimSort.setText("TimSort");
+        TimSortLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        TimSortLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimSortLabel.setText("TimSort");
 
-        InsertionSort.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        InsertionSort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        InsertionSort.setText("InsertionSort");
+        InsertionSortLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        InsertionSortLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        InsertionSortLabel.setText("InsertionSort");
 
         jButtonQuickSort.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonQuickSort.setText("●");
-        jButtonQuickSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonQuickSort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonQuickSort.addActionListener(this::jButtonQuickSortActionPerformed);
 
         jButtonMergeSort.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonMergeSort.setText("●");
-        jButtonMergeSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMergeSort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonMergeSort.addActionListener(this::jButtonMergeSortActionPerformed);
 
         jButtonHeapSort.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonHeapSort.setText("●");
-        jButtonHeapSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHeapSort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonHeapSort.addActionListener(this::jButtonHeapSortActionPerformed);
 
         jButtonTimSort.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonTimSort.setText("●");
-        jButtonTimSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonTimSort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonTimSort.addActionListener(this::jButtonTimSortActionPerformed);
 
         jButtonInsertionSort.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonInsertionSort.setText("●");
-        jButtonInsertionSort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsertionSort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonInsertionSort.addActionListener(this::jButtonInsertionSortActionPerformed);
 
         jButton1000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1000.setText("●");
-        jButton1000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1000.setPreferredSize(null);
         jButton1000.addActionListener(this::jButton1000ActionPerformed);
 
         jButton10000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton10000.setText("●");
-        jButton10000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton10000.setPreferredSize(null);
         jButton10000.addActionListener(this::jButton10000ActionPerformed);
 
         jButton100000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton100000.setText("●");
-        jButton100000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton100000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton100000.setPreferredSize(null);
         jButton100000.addActionListener(this::jButton100000ActionPerformed);
 
         jButton500000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton500000.setText("●");
-        jButton500000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton500000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton500000.setPreferredSize(null);
         jButton500000.addActionListener(this::jButton500000ActionPerformed);
 
         jButton1000000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1000000.setText("●");
-        jButton1000000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1000000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1000000.setPreferredSize(null);
         jButton1000000.addActionListener(this::jButton1000000ActionPerformed);
 
@@ -296,19 +308,17 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
                         .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                                .addComponent(QuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(QuickSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addComponent(MergeSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addComponent(HeapSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(HeapSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(6, 6, 6)
-                        .addComponent(TimSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TimSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(InsertionSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(InsertionSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
                         .addComponent(jButtonQuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
@@ -331,9 +341,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelAlgoritmosLayout.createSequentialGroup()
                         .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TituloCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TituloCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
                                 .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -352,11 +360,11 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QuickSort, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(MergeSort)
-                    .addComponent(HeapSort)
-                    .addComponent(TimSort)
-                    .addComponent(InsertionSort))
+                    .addComponent(QuickSortLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(MergeSortLabel)
+                    .addComponent(HeapSortLabel)
+                    .addComponent(TimSortLabel)
+                    .addComponent(InsertionSortLabel))
                 .addGap(12, 12, 12)
                 .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonQuickSort)
@@ -387,15 +395,15 @@ public class Menu extends javax.swing.JFrame {
         jPanelResultados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jButtonResultados.setText("《 Resultados");
-        jButtonResultados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonResultados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonResultados.addActionListener(this::jButtonResultadosActionPerformed);
 
         jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonCancelar.addActionListener(this::jButtonCancelarActionPerformed);
 
         jButtonRun.setText("Run");
-        jButtonRun.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRun.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonRun.addActionListener(this::jButtonRunActionPerformed);
 
         jLabelMensagemErro.setBackground(new java.awt.Color(255, 0, 0));
@@ -543,7 +551,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabelTituloResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMensagemErro)
                 .addContainerGap())
         );
@@ -552,7 +560,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 620, Short.MAX_VALUE)
             .addComponent(PainelAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -640,7 +648,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     
-    public static void main(String args[]) throws IOException, CsvValidationException {
+    public static void init() throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -660,8 +668,6 @@ public class Menu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Menu().setVisible(true));
-        
-       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -670,12 +676,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel Capacidade100000;
     private javax.swing.JLabel Capacidade1000000;
     private javax.swing.JLabel Capacidade500000;
-    private javax.swing.JLabel HeapSort;
-    private javax.swing.JLabel InsertionSort;
-    private javax.swing.JLabel MergeSort;
+    private javax.swing.JLabel HeapSortLabel;
+    private javax.swing.JLabel InsertionSortLabel;
+    private javax.swing.JLabel MergeSortLabel;
     private javax.swing.JPanel PainelAlgoritmos;
-    private javax.swing.JLabel QuickSort;
-    private javax.swing.JLabel TimSort;
+    private javax.swing.JLabel QuickSortLabel;
+    private javax.swing.JLabel TimSortLabel;
     private javax.swing.JLabel TituloCapacidade;
     private javax.swing.JLabel TituloMenu;
     private javax.swing.JButton jButton1000;

@@ -1,4 +1,4 @@
-package fenixv.aps4;
+package fenixv.algoritmos;
 
 // 2º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 1)
 public class MergeSort {

@@ -1,12 +1,4 @@
-package interfaceGrafica;
-
-import fenixv.aps4.APS4;
-import fenixv.aps4.QuickSort;
-import fenixv.aps4.MergeSort;
-import fenixv.aps4.HeapSort;
-import fenixv.aps4.TimSort;
-import fenixv.aps4.InsertionSort;
-// As blibliotecas do nosso código para associar aqui na interface gráfica, Pedro.
+package fenixv.ui;
 
 public class Resultados extends javax.swing.JFrame {
     
@@ -117,31 +109,31 @@ public class Resultados extends javax.swing.JFrame {
 
         jButton1000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1000.setText("●");
-        jButton1000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1000.setPreferredSize(null);
         jButton1000.addActionListener(this::jButton1000ActionPerformed);
 
         jButton10000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton10000.setText("●");
-        jButton10000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton10000.setPreferredSize(null);
         jButton10000.addActionListener(this::jButton10000ActionPerformed);
 
         jButton100000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton100000.setText("●");
-        jButton100000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton100000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton100000.setPreferredSize(null);
         jButton100000.addActionListener(this::jButton100000ActionPerformed);
 
         jButton500000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton500000.setText("●");
-        jButton500000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton500000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton500000.setPreferredSize(null);
         jButton500000.addActionListener(this::jButton500000ActionPerformed);
 
         jButton1000000.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1000000.setText("●");
-        jButton1000000.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1000000.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1000000.setPreferredSize(null);
         jButton1000000.addActionListener(this::jButton1000000ActionPerformed);
 
@@ -547,7 +539,7 @@ public class Resultados extends javax.swing.JFrame {
 
         jButtonVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonVoltar.setText("Voltar");
-        jButtonVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonVoltar.addActionListener(this::jButtonVoltarActionPerformed);
 

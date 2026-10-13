@@ -28,7 +28,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelResultados" alignment="0" pref="0" max="32767" attributes="0"/>
+          <Component id="jPanelResultados" alignment="0" pref="620" max="32767" attributes="0"/>
           <Component id="PainelAlgoritmos" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -64,22 +64,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="TituloMenu" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="TituloMenu" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="QuickSort" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="MergeSort" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="QuickSortLabel" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                                  <Component id="MergeSortLabel" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="HeapSort" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="HeapSortLabel" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="TimSort" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="TimSortLabel" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="InsertionSort" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="InsertionSortLabel" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jButtonQuickSort" min="-2" pref="100" max="-2" attributes="0"/>
@@ -105,10 +102,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="TituloCapacidade" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="TituloCapacidade" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="Capacidade1000" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -133,11 +127,11 @@
                   <Component id="TituloMenu" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="QuickSort" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="MergeSort" min="-2" max="-2" attributes="0"/>
-                      <Component id="HeapSort" min="-2" max="-2" attributes="0"/>
-                      <Component id="TimSort" min="-2" max="-2" attributes="0"/>
-                      <Component id="InsertionSort" min="-2" max="-2" attributes="0"/>
+                      <Component id="QuickSortLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="MergeSortLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="HeapSortLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="TimSortLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="InsertionSortLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -180,7 +174,7 @@
             <Property name="text" type="java.lang.String" value="Algoritmos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="QuickSort">
+        <Component class="javax.swing.JLabel" name="QuickSortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -189,7 +183,7 @@
             <Property name="text" type="java.lang.String" value="QuickSort"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="MergeSort">
+        <Component class="javax.swing.JLabel" name="MergeSortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -198,7 +192,7 @@
             <Property name="text" type="java.lang.String" value="MergeSort"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="HeapSort">
+        <Component class="javax.swing.JLabel" name="HeapSortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -207,7 +201,7 @@
             <Property name="text" type="java.lang.String" value="HeapSort"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="TimSort">
+        <Component class="javax.swing.JLabel" name="TimSortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -216,7 +210,7 @@
             <Property name="text" type="java.lang.String" value="TimSort"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="InsertionSort">
+        <Component class="javax.swing.JLabel" name="InsertionSortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -232,7 +226,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -246,7 +240,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -260,7 +254,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -274,7 +268,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -288,7 +282,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -302,7 +296,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="null"/>
@@ -319,7 +313,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="null"/>
@@ -336,7 +330,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="null"/>
@@ -353,7 +347,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="null"/>
@@ -370,7 +364,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x25cf;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="null"/>
@@ -506,7 +500,7 @@
                           <Component id="jPanelResultadosAlgoritmo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabelMensagemErro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -518,7 +512,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x300a; Resultados"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -529,7 +523,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -540,7 +534,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Run"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>

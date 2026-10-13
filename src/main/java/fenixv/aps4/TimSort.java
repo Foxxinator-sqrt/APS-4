@@ -83,8 +83,8 @@ public class TimSort {
         int tamanhoEsquerda = meio - inicio + 1;
         int tamanhoDireita = fim - meio;
 
-        Integer[] esquerda = new Integer[tamanhoEsquerda];
-        Integer[] direita = new Integer[tamanhoDireita];
+        int [] esquerda = new int [tamanhoEsquerda];
+        int [] direita = new int[tamanhoDireita];
 
         for (int i = 0; i < tamanhoEsquerda; i++) {
             esquerda[i] = v[inicio + i];

@@ -11,19 +11,16 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         
-        // Todos os elementos estão renomeados. Se quiser mudar os nomes para facilitar o entendimento, fique à vontade, Pedro.
-        
         // O ícone personalizado aparece na janela principal do sistema e também.
         // Se quiser trocar a imagem, é só baixar outra e colocar na pasta Other Sources > resources > imagens.
         // Depois, altere o caminho da imagem no código, por exemplo: "/imagens/icone.png".
         // Sempre execute a interface gráfica para conferir se o ícone apareceu corretamente.
-        setIconImage(new javax.swing.ImageIcon( getClass().getResource("/imagens/icone.png")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icone.png")).getImage());
 
         // Se o usuário esquecer de selecionar o algoritmo ou a capacidade, a mensagem de erro deve aparecer na interface gráfica, avisando o que está faltando.
         // Se ele selecionar tudo corretamente, a mensagem deve ficar escondida novamente.
         jLabelMensagemErro.setVisible(false);
     }
-    
     
     private int idBotaoAlgoritmo = 0;
     private int idBotaoCapacidade = 0;
@@ -188,10 +185,16 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(640, 460));
         setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(640, 460));
+        setResizable(false);
 
         PainelAlgoritmos.setBackground(new java.awt.Color(255, 255, 255));
-        PainelAlgoritmos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        PainelAlgoritmos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelAlgoritmos.setMaximumSize(new java.awt.Dimension(640, 230));
+        PainelAlgoritmos.setPreferredSize(new java.awt.Dimension(640, 230));
+        PainelAlgoritmos.setRequestFocusEnabled(false);
 
         TituloMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TituloMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -298,101 +301,104 @@ public class Menu extends javax.swing.JFrame {
         TituloCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TituloCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TituloCapacidade.setText("Capacidade");
+        TituloCapacidade.setPreferredSize(new java.awt.Dimension(78, 20));
 
         javax.swing.GroupLayout PainelAlgoritmosLayout = new javax.swing.GroupLayout(PainelAlgoritmos);
         PainelAlgoritmos.setLayout(PainelAlgoritmosLayout);
         PainelAlgoritmosLayout.setHorizontalGroup(
             PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                        .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                                .addComponent(QuickSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                                .addComponent(MergeSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(HeapSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addComponent(TimSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(InsertionSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 38, Short.MAX_VALUE)
+                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
+                            .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Capacidade100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Capacidade500000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Capacidade1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
+                            .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton500000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
                         .addComponent(jButtonQuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonMergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addGap(12, 12, 12)
                         .addComponent(jButtonHeapSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonTimSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonInsertionSort, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelAlgoritmosLayout.createSequentialGroup()
-                        .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton500000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelAlgoritmosLayout.createSequentialGroup()
-                        .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TituloCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
-                                .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(Capacidade100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addComponent(Capacidade500000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(Capacidade1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelAlgoritmosLayout.createSequentialGroup()
+                        .addComponent(QuickSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MergeSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(HeapSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TimSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(InsertionSortLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TituloMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TituloCapacidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         PainelAlgoritmosLayout.setVerticalGroup(
             PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelAlgoritmosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QuickSortLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(MergeSortLabel)
-                    .addComponent(HeapSortLabel)
-                    .addComponent(TimSortLabel)
-                    .addComponent(InsertionSortLabel))
-                .addGap(12, 12, 12)
-                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonQuickSort)
-                    .addComponent(jButtonMergeSort)
-                    .addComponent(jButtonHeapSort)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(QuickSortLabel)
+                        .addComponent(MergeSortLabel)
+                        .addComponent(HeapSortLabel))
+                    .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(InsertionSortLabel)
+                        .addComponent(TimSortLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonInsertionSort)
                     .addComponent(jButtonTimSort)
-                    .addComponent(jButtonInsertionSort))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jButtonHeapSort)
+                    .addComponent(jButtonMergeSort)
+                    .addComponent(jButtonQuickSort))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TituloCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade100000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade500000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelAlgoritmosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton100000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton500000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanelResultados.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelResultados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanelResultados.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelResultados.setMaximumSize(new java.awt.Dimension(640, 230));
+        jPanelResultados.setPreferredSize(new java.awt.Dimension(638, 230));
 
         jButtonResultados.setText("《 Resultados");
         jButtonResultados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -408,6 +414,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabelMensagemErro.setBackground(new java.awt.Color(255, 0, 0));
         jLabelMensagemErro.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelMensagemErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMensagemErro.setText("Selecione um algoritmo e uma capacidade antes de executar.");
 
         jLabelTituloResultados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -470,17 +477,17 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelResultadosAlgoritmoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelComparacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMovimentacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMovimentacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                     .addComponent(jLabelTempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelCapacidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanelResultadosAlgoritmoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNomeResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelCapacidadeResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelResultadosAlgoritmoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelMovimentacoesResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                     .addComponent(jLabelTempoResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMovimentacoesResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelComparacoesResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelCapacidadeResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNomeResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelComparacoesResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelResultadosAlgoritmoLayout.setVerticalGroup(
@@ -513,27 +520,24 @@ public class Menu extends javax.swing.JFrame {
         jPanelResultados.setLayout(jPanelResultadosLayout);
         jPanelResultadosLayout.setHorizontalGroup(
             jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadosLayout.createSequentialGroup()
+            .addGroup(jPanelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonResultados)
-                .addGap(57, 57, 57)
-                .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                        .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(303, 303, 303))
-                    .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                        .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabelMensagemErro))
-                            .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabelTituloResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(45, 45, 45)
-                                .addComponent(jButtonRun)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCancelar)))
-                        .addGap(151, 151, 151))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelTituloResultados)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonRun)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCancelar)
+                .addContainerGap())
+            .addGroup(jPanelResultadosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelMensagemErro, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanelResultadosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanelResultadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonCancelar, jButtonRun});
@@ -542,16 +546,14 @@ public class Menu extends javax.swing.JFrame {
             jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonResultados)
-                        .addComponent(jButtonCancelar)
-                        .addComponent(jButtonRun))
-                    .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                        .addComponent(jLabelTituloResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTituloResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonResultados)
+                    .addComponent(jButtonRun)
+                    .addComponent(jButtonCancelar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelMensagemErro)
                 .addContainerGap())
         );
@@ -560,16 +562,21 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 620, Short.MAX_VALUE)
-            .addComponent(PainelAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                    .addComponent(PainelAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(PainelAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(PainelAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
 
         pack();
@@ -578,75 +585,59 @@ public class Menu extends javax.swing.JFrame {
     
     // Eventos dos botões, responsáveis por executar cada ação.
     private void jButtonQuickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuickSortActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoAlgoritimos(jButtonQuickSort, 1);
     }//GEN-LAST:event_jButtonQuickSortActionPerformed
 
     private void jButtonMergeSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMergeSortActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoAlgoritimos(jButtonMergeSort, 2);
     }//GEN-LAST:event_jButtonMergeSortActionPerformed
 
     private void jButtonHeapSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHeapSortActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoAlgoritimos(jButtonHeapSort, 3);
     }//GEN-LAST:event_jButtonHeapSortActionPerformed
 
     private void jButtonTimSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimSortActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoAlgoritimos(jButtonTimSort, 4);
     }//GEN-LAST:event_jButtonTimSortActionPerformed
 
     private void jButtonInsertionSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertionSortActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoAlgoritimos(jButtonInsertionSort, 5);
     }//GEN-LAST:event_jButtonInsertionSortActionPerformed
 
-    
     private void jButton1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1000ActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoCapacidade(jButton1000, 1);
     }//GEN-LAST:event_jButton1000ActionPerformed
 
     private void jButton10000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10000ActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoCapacidade(jButton10000, 2);
     }//GEN-LAST:event_jButton10000ActionPerformed
 
     private void jButton100000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton100000ActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoCapacidade(jButton100000, 3);
     }//GEN-LAST:event_jButton100000ActionPerformed
 
     private void jButton500000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton500000ActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoCapacidade(jButton500000, 4);
     }//GEN-LAST:event_jButton500000ActionPerformed
 
     private void jButton1000000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1000000ActionPerformed
-        // TODO add your handling code here:
         selecionarBotaoCapacidade(jButton1000000, 5);
     }//GEN-LAST:event_jButton1000000ActionPerformed
 
     
     private void jButtonResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultadosActionPerformed
-        // TODO add your handling code here:
         Resultados tela = new Resultados();
         tela.setVisible(true);
-
         this.dispose();
     }//GEN-LAST:event_jButtonResultadosActionPerformed
 
     private void jButtonRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRunActionPerformed
-        // TODO add your handling code here:
         executarRun(idBotaoAlgoritmo, idBotaoCapacidade);
     }//GEN-LAST:event_jButtonRunActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
         executarCancelar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
-
     
     public static void init() throws IOException {
         /* Set the Nimbus look and feel */

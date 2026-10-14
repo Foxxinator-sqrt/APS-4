@@ -27,24 +27,31 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelResultados" alignment="0" min="-2" max="-2" attributes="0"/>
-          <Component id="jPanelCapacidade" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanelCapacidade" alignment="0" pref="537" max="32767" attributes="0"/>
+                  <Component id="jPanelResultados" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="jButtonVoltar" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelCapacidade" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelResultados" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jButtonVoltar" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButtonVoltar" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,8 +63,8 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
           </Border>
         </Property>
       </Properties>
@@ -66,29 +73,27 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="69" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Group type="102" alignment="2" attributes="0">
                           <Component id="jButton1000" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButton10000" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="jButton100000" linkSize="7" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="jButton100000" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="jButton500000" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="jButton1000000" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TituloCapacidade" linkSize="7" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="Capacidade1000" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="Capacidade10000" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="Capacidade100000" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="Capacidade1000" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="Capacidade10000" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="TituloCapacidade" pref="100" max="32767" attributes="0"/>
+                              <Component id="Capacidade100000" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="Capacidade500000" min="-2" pref="100" max="-2" attributes="0"/>
@@ -96,7 +101,7 @@
                           <Component id="Capacidade1000000" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,21 +112,25 @@
                   <Component id="TituloCapacidade" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Capacidade1000" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="Capacidade10000" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="Capacidade10000" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="Capacidade1000" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="Capacidade100000" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="Capacidade500000" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="Capacidade1000000" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton1000" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton10000" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="jButton10000" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1000" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="jButton100000" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton500000" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1000000" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -283,8 +292,8 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
           </Border>
         </Property>
       </Properties>
@@ -292,15 +301,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="TituloCapacidade1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="TituloCapacidade1" pref="521" max="32767" attributes="0"/>
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -329,9 +336,12 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
               </Border>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[476, 185]"/>
             </Property>
           </Properties>
 
@@ -339,136 +349,140 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelTituloAlgoritmos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelQuickSort" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTimSort" linkSize="4" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="jLabelMergeSort" linkSize="4" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="jLabelHeapSort" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelInsertionSort" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelTituloCapacidade" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jLabelNomeResultadoQuickSortCapacidade" linkSize="6" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoMergeSortCapacidade" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoHeapSortCapacidade" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoTimSortCapacidade" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoInsertionSortCapacidade" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabelTituloAlgoritmos" max="32767" attributes="0"/>
+                                  <Component id="jLabelQuickSort" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelTimSort" linkSize="4" alignment="0" pref="59" max="32767" attributes="0"/>
+                                  <Component id="jLabelMergeSort" linkSize="4" alignment="1" pref="69" max="32767" attributes="0"/>
+                                  <Component id="jLabelInsertionSort" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabelHeapSort" linkSize="4" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelTituloTempo" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelNomeResultadoMergeSortTempo" linkSize="6" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jLabelNomeResultadoQuickSortTempo" linkSize="6" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoMergekSortTempo" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="jLabelNomeResultadoHeapSortTempo" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="jLabelNomeResultadoTimSortTempo" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="jLabelNomeResultadoInsertionSortTempo" linkSize="6" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabelNomeResultadoQuickSortTempo" linkSize="6" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="jLabelTituloTempo" linkSize="6" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelMovimentacoes" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelNomeResultadoQuickSortMovimentacoes" linkSize="6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="jLabelNomeResultadoMergeSortMovimentacoes" linkSize="6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jLabelNomeResultadoQuickSortMovimentacoes" linkSize="6" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoMergeSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoHeapSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoTimSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="jLabelNomeResultadoInsertionSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="jLabelNomeResultadoTimSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="jLabelNomeResultadoInsertionSortMovimentacoes" linkSize="6" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabelNomeResultadoHeapSortMovimentacoes" linkSize="6" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="jLabelMovimentacoes" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="jLabelNomeResultadoTimSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="jLabelNomeResultadoInsertionSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabelNomeResultadoQuickSortComparacoes" linkSize="6" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="jLabelNomeResultadoMergeSortComparacoes" linkSize="6" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="jLabelNomeResultadoHeapSortComparacoes" linkSize="6" min="-2" pref="91" max="-2" attributes="0"/>
                           <Component id="jLabelTituloComparacoes" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeResultadoQuickSortSortComparacoes" linkSize="6" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeResultadoMergeSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeResultadoHeapSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeResultadoTimSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeResultadoInsertionSortComparacoes" linkSize="6" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTituloCapacidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelTituloTempo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelMovimentacoes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelTituloComparacoes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelMovimentacoes" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTituloAlgoritmos" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelNomeResultadoQuickSortCapacidade" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="8" max="32767" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoMergeSortCapacidade" linkSize="5" min="-2" pref="18" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoHeapSortCapacidade" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoTimSortCapacidade" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoInsertionSortCapacidade" linkSize="5" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Component id="jLabelTituloComparacoes" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelNomeResultadoQuickSortTempo" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoMergekSortTempo" linkSize="5" min="-2" pref="18" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoHeapSortTempo" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoTimSortTempo" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoInsertionSortTempo" linkSize="5" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabelNomeResultadoHeapSortComparacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoTimSortComparacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoInsertionSortComparacoes" linkSize="5" min="-2" pref="19" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabelNomeResultadoMergeSortComparacoes" linkSize="5" min="-2" pref="18" max="-2" attributes="0"/>
+                                              <EmptySpace min="78" pref="78" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabelNomeResultadoQuickSortComparacoes" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="104" pref="104" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelNomeResultadoQuickSortMovimentacoes" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoMergeSortMovimentacoes" linkSize="5" min="-2" pref="18" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoHeapSortMovimentacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoTimSortMovimentacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoInsertionSortMovimentacoes" linkSize="5" min="-2" pref="19" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelNomeResultadoQuickSortSortComparacoes" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoMergeSortComparacoes" linkSize="5" min="-2" pref="18" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoHeapSortComparacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoTimSortComparacoes" linkSize="5" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelNomeResultadoInsertionSortComparacoes" linkSize="5" min="-2" pref="19" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabelTituloTempo" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelNomeResultadoHeapSortTempo" linkSize="5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoHeapSortMovimentacoes" linkSize="5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="jLabelHeapSort" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelNomeResultadoTimSortTempo" linkSize="5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoTimSortMovimentacoes" linkSize="5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="jLabelTimSort" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelNomeResultadoInsertionSortTempo" linkSize="5" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoInsertionSortMovimentacoes" linkSize="5" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <Component id="jLabelInsertionSort" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelNomeResultadoMergeSortTempo" linkSize="5" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoQuickSortMovimentacoes" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelMergeSort" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="78" pref="78" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelNomeResultadoQuickSortTempo" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelNomeResultadoMergeSortMovimentacoes" linkSize="5" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="jLabelQuickSort" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="104" pref="104" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelTituloAlgoritmos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelQuickSort" linkSize="5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabelMergeSort" linkSize="5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelHeapSort" linkSize="5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelTimSort" linkSize="5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelInsertionSort" linkSize="5" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -480,16 +494,6 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Algoritmos"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTituloCapacidade">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Capacidade"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTituloTempo">
@@ -547,76 +551,6 @@
                 <Property name="text" type="java.lang.String" value="InsertionSort:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortCapacidade">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoMergeSortCapacidade">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoHeapSortCapacidade">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoTimSortCapacidade">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoInsertionSortCapacidade">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortTempo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -631,7 +565,7 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoMergekSortTempo">
+            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoMergeSortTempo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -674,6 +608,20 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelNomeResultadoInsertionSortTempo">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="-"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortMovimentacoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -743,7 +691,7 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortMovimentacoes">
+            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortComparacoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -800,20 +748,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelNomeResultadoInsertionSortComparacoes">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNomeResultadoQuickSortSortComparacoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -1,14 +1,13 @@
 package fenixv.algoritmos;
 
 // 3º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 2)
-public class HeapSort
-{
+public class HeapSort {
+    
     // As variaveis garantem o resultado no final da classe algoritmo.
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor)
-    {
+    public static int[][] executar(int[][] matriz, int quantidade, int[] vetor){
         movimentacoes = 0;
         comparacoes = 0;
         

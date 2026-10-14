@@ -1,11 +1,14 @@
 package fenixv.ui;
 
+import fenixv.aps4.APS4;
+
 public class Resultados extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Resultados.class.getName());
 
     public Resultados() {
         initComponents();
+        fetchElements();
         
         // O ícone personalizado aparece na janela principal do sistema e também.
         // Se quiser trocar a imagem, é só baixar outra e colocar na pasta Other Sources > resources > imagens.
@@ -13,21 +16,68 @@ public class Resultados extends javax.swing.JFrame {
         // Sempre execute a interface gráfica para conferir se o ícone apareceu corretamente.
         setIconImage(new javax.swing.ImageIcon( getClass().getResource("/imagens/icone.png")).getImage());
     }
+    
     private int idBotaoCapacidade = 0;
     
     // Esse método funciona quando usuário escolhe qual a capacidade.
     public void selecionarBotaoCapacidade(javax.swing.JButton botaoSelecionado, int idBotaoCapacidade){
-         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
-         java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
-         
-         jButton1000.setBackground(corPadrao);
-         jButton10000.setBackground(corPadrao);
-         jButton100000.setBackground(corPadrao);
-         jButton500000.setBackground(corPadrao);
-         jButton1000000.setBackground(corPadrao);
-         
-         botaoSelecionado.setBackground(corSelecionado);
-          this.idBotaoCapacidade = idBotaoCapacidade;
+        java.awt.Color corPadrao = new java.awt.Color(255,255,255);
+        java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
+
+        jButton1000.setBackground(corPadrao);
+        jButton10000.setBackground(corPadrao);
+        jButton100000.setBackground(corPadrao);
+        jButton500000.setBackground(corPadrao);
+        jButton1000000.setBackground(corPadrao);
+
+        botaoSelecionado.setBackground(corSelecionado);
+        this.idBotaoCapacidade = idBotaoCapacidade;
+        
+        int offset = 0;
+        switch (idBotaoCapacidade){
+            case 2 -> offset = 3;
+            case 3 -> offset = 6;
+            case 4 -> offset = 9;
+            case 5 -> offset = 12;
+        }
+        
+        for (int i = 0; i < 5; i++){
+            if (APS4.dados[i][offset] != 0)
+                rows[i][0].setText(String.format("%.3fms%n", (double) APS4.dados[i][offset] / 1_000_000.0));
+            else rows[i][0].setText("-");
+            
+            if (APS4.dados[i][offset + 1] != 0)
+                rows[i][1].setText(Integer.toString(APS4.dados[i][offset + 1]));
+            else rows[i][1].setText("-");
+            
+            if (APS4.dados[i][offset + 2] != 0)
+                rows[i][2].setText(Integer.toString(APS4.dados[i][offset + 2]));
+            else rows[i][2].setText("-");
+        }
+    }
+    
+    private void fetchElements(){
+        rows = new javax.swing.JLabel[][]{{
+            jLabelNomeResultadoQuickSortTempo,
+            jLabelNomeResultadoQuickSortMovimentacoes,
+            jLabelNomeResultadoQuickSortComparacoes
+        }, {
+            jLabelNomeResultadoMergeSortTempo,
+            jLabelNomeResultadoMergeSortMovimentacoes,
+            jLabelNomeResultadoMergeSortComparacoes
+        }, {
+            jLabelNomeResultadoHeapSortTempo,
+            jLabelNomeResultadoHeapSortMovimentacoes,
+            jLabelNomeResultadoHeapSortComparacoes
+        }, {
+            jLabelNomeResultadoTimSortTempo,
+            jLabelNomeResultadoTimSortMovimentacoes,
+            jLabelNomeResultadoTimSortComparacoes
+        }, {
+            jLabelNomeResultadoInsertionSortTempo,
+            jLabelNomeResultadoInsertionSortMovimentacoes,
+            jLabelNomeResultadoInsertionSortComparacoes
+        }};
     }
 
     /**
@@ -55,7 +105,6 @@ public class Resultados extends javax.swing.JFrame {
         TituloCapacidade1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelTituloAlgoritmos = new javax.swing.JLabel();
-        jLabelTituloCapacidade = new javax.swing.JLabel();
         jLabelTituloTempo = new javax.swing.JLabel();
         jLabelMovimentacoes = new javax.swing.JLabel();
         jLabelTituloComparacoes = new javax.swing.JLabel();
@@ -64,26 +113,21 @@ public class Resultados extends javax.swing.JFrame {
         jLabelHeapSort = new javax.swing.JLabel();
         jLabelTimSort = new javax.swing.JLabel();
         jLabelInsertionSort = new javax.swing.JLabel();
-        jLabelNomeResultadoQuickSortCapacidade = new javax.swing.JLabel();
-        jLabelNomeResultadoMergeSortCapacidade = new javax.swing.JLabel();
-        jLabelNomeResultadoHeapSortCapacidade = new javax.swing.JLabel();
-        jLabelNomeResultadoTimSortCapacidade = new javax.swing.JLabel();
-        jLabelNomeResultadoInsertionSortCapacidade = new javax.swing.JLabel();
         jLabelNomeResultadoQuickSortTempo = new javax.swing.JLabel();
-        jLabelNomeResultadoMergekSortTempo = new javax.swing.JLabel();
+        jLabelNomeResultadoMergeSortTempo = new javax.swing.JLabel();
         jLabelNomeResultadoHeapSortTempo = new javax.swing.JLabel();
         jLabelNomeResultadoTimSortTempo = new javax.swing.JLabel();
         jLabelNomeResultadoInsertionSortTempo = new javax.swing.JLabel();
+        jLabelNomeResultadoQuickSortMovimentacoes = new javax.swing.JLabel();
         jLabelNomeResultadoMergeSortMovimentacoes = new javax.swing.JLabel();
         jLabelNomeResultadoHeapSortMovimentacoes = new javax.swing.JLabel();
         jLabelNomeResultadoTimSortMovimentacoes = new javax.swing.JLabel();
         jLabelNomeResultadoInsertionSortMovimentacoes = new javax.swing.JLabel();
-        jLabelNomeResultadoQuickSortMovimentacoes = new javax.swing.JLabel();
+        jLabelNomeResultadoQuickSortComparacoes = new javax.swing.JLabel();
         jLabelNomeResultadoMergeSortComparacoes = new javax.swing.JLabel();
         jLabelNomeResultadoHeapSortComparacoes = new javax.swing.JLabel();
         jLabelNomeResultadoTimSortComparacoes = new javax.swing.JLabel();
         jLabelNomeResultadoInsertionSortComparacoes = new javax.swing.JLabel();
-        jLabelNomeResultadoQuickSortSortComparacoes = new javax.swing.JLabel();
         jButtonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +135,7 @@ public class Resultados extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanelCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelCapacidade.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanelCapacidade.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         TituloCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TituloCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,11 +199,11 @@ public class Resultados extends javax.swing.JFrame {
         jPanelCapacidadeLayout.setHorizontalGroup(
             jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCapacidadeLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jPanelCapacidadeLayout.createSequentialGroup()
                         .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(jButton100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,23 +212,19 @@ public class Resultados extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCapacidadeLayout.createSequentialGroup()
-                        .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TituloCapacidade)
-                            .addGroup(jPanelCapacidadeLayout.createSequentialGroup()
-                                .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(Capacidade100000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TituloCapacidade, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(Capacidade100000, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(6, 6, 6)
                         .addComponent(Capacidade500000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(Capacidade1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(64, 64, 64))
+                .addContainerGap())
         );
-
-        jPanelCapacidadeLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {TituloCapacidade, jButton100000});
-
         jPanelCapacidadeLayout.setVerticalGroup(
             jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCapacidadeLayout.createSequentialGroup()
@@ -192,37 +232,35 @@ public class Resultados extends javax.swing.JFrame {
                 .addComponent(TituloCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Capacidade10000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Capacidade1000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Capacidade100000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade500000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Capacidade1000000, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelCapacidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton10000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton100000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton500000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1000000, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelResultados.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelResultados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanelResultados.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         TituloCapacidade1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TituloCapacidade1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TituloCapacidade1.setText("Resultados dos Algoritmos");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setMinimumSize(new java.awt.Dimension(476, 185));
 
         jLabelTituloAlgoritmos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelTituloAlgoritmos.setText("Algoritmos");
-
-        jLabelTituloCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelTituloCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTituloCapacidade.setText("Capacidade");
-        jLabelTituloCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabelTituloTempo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelTituloTempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -249,41 +287,6 @@ public class Resultados extends javax.swing.JFrame {
 
         jLabelInsertionSort.setText("InsertionSort:");
 
-        jLabelNomeResultadoQuickSortCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoQuickSortCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoQuickSortCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortCapacidade.setText("-");
-        jLabelNomeResultadoQuickSortCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortCapacidade.setOpaque(true);
-
-        jLabelNomeResultadoMergeSortCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoMergeSortCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoMergeSortCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoMergeSortCapacidade.setText("-");
-        jLabelNomeResultadoMergeSortCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoMergeSortCapacidade.setOpaque(true);
-
-        jLabelNomeResultadoHeapSortCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoHeapSortCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoHeapSortCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoHeapSortCapacidade.setText("-");
-        jLabelNomeResultadoHeapSortCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoHeapSortCapacidade.setOpaque(true);
-
-        jLabelNomeResultadoTimSortCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoTimSortCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoTimSortCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoTimSortCapacidade.setText("-");
-        jLabelNomeResultadoTimSortCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoTimSortCapacidade.setOpaque(true);
-
-        jLabelNomeResultadoInsertionSortCapacidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoInsertionSortCapacidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoInsertionSortCapacidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoInsertionSortCapacidade.setText("-");
-        jLabelNomeResultadoInsertionSortCapacidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoInsertionSortCapacidade.setOpaque(true);
-
         jLabelNomeResultadoQuickSortTempo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNomeResultadoQuickSortTempo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelNomeResultadoQuickSortTempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -291,12 +294,12 @@ public class Resultados extends javax.swing.JFrame {
         jLabelNomeResultadoQuickSortTempo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelNomeResultadoQuickSortTempo.setOpaque(true);
 
-        jLabelNomeResultadoMergekSortTempo.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoMergekSortTempo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoMergekSortTempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoMergekSortTempo.setText("-");
-        jLabelNomeResultadoMergekSortTempo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoMergekSortTempo.setOpaque(true);
+        jLabelNomeResultadoMergeSortTempo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelNomeResultadoMergeSortTempo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelNomeResultadoMergeSortTempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoMergeSortTempo.setText("-");
+        jLabelNomeResultadoMergeSortTempo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoMergeSortTempo.setOpaque(true);
 
         jLabelNomeResultadoHeapSortTempo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNomeResultadoHeapSortTempo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -318,6 +321,13 @@ public class Resultados extends javax.swing.JFrame {
         jLabelNomeResultadoInsertionSortTempo.setText("-");
         jLabelNomeResultadoInsertionSortTempo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelNomeResultadoInsertionSortTempo.setOpaque(true);
+
+        jLabelNomeResultadoQuickSortMovimentacoes.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelNomeResultadoQuickSortMovimentacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelNomeResultadoQuickSortMovimentacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoQuickSortMovimentacoes.setText("-");
+        jLabelNomeResultadoQuickSortMovimentacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoQuickSortMovimentacoes.setOpaque(true);
 
         jLabelNomeResultadoMergeSortMovimentacoes.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNomeResultadoMergeSortMovimentacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -347,12 +357,12 @@ public class Resultados extends javax.swing.JFrame {
         jLabelNomeResultadoInsertionSortMovimentacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelNomeResultadoInsertionSortMovimentacoes.setOpaque(true);
 
-        jLabelNomeResultadoQuickSortMovimentacoes.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoQuickSortMovimentacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoQuickSortMovimentacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortMovimentacoes.setText("-");
-        jLabelNomeResultadoQuickSortMovimentacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortMovimentacoes.setOpaque(true);
+        jLabelNomeResultadoQuickSortComparacoes.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelNomeResultadoQuickSortComparacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelNomeResultadoQuickSortComparacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoQuickSortComparacoes.setText("-");
+        jLabelNomeResultadoQuickSortComparacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelNomeResultadoQuickSortComparacoes.setOpaque(true);
 
         jLabelNomeResultadoMergeSortComparacoes.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNomeResultadoMergeSortComparacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -382,137 +392,121 @@ public class Resultados extends javax.swing.JFrame {
         jLabelNomeResultadoInsertionSortComparacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelNomeResultadoInsertionSortComparacoes.setOpaque(true);
 
-        jLabelNomeResultadoQuickSortSortComparacoes.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNomeResultadoQuickSortSortComparacoes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelNomeResultadoQuickSortSortComparacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortSortComparacoes.setText("-");
-        jLabelNomeResultadoQuickSortSortComparacoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelNomeResultadoQuickSortSortComparacoes.setOpaque(true);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTituloAlgoritmos)
-                    .addComponent(jLabelQuickSort)
-                    .addComponent(jLabelTimSort, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelHeapSort)
-                    .addComponent(jLabelInsertionSort))
-                .addGap(29, 29, 29)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelTituloAlgoritmos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelQuickSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelTimSort, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(jLabelMergeSort, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(jLabelInsertionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelHeapSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTituloCapacidade)
+                    .addComponent(jLabelNomeResultadoMergeSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelNomeResultadoQuickSortCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoMergeSortCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoHeapSortCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoTimSortCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoInsertionSortCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTituloTempo)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelNomeResultadoQuickSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoMergekSortTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelNomeResultadoHeapSortTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelNomeResultadoTimSortTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoInsertionSortTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                        .addComponent(jLabelNomeResultadoInsertionSortTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNomeResultadoQuickSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTituloTempo, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMovimentacoes)
+                    .addComponent(jLabelNomeResultadoQuickSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomeResultadoMergeSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelNomeResultadoQuickSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoMergeSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoHeapSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoTimSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelNomeResultadoInsertionSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                        .addComponent(jLabelNomeResultadoTimSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNomeResultadoInsertionSortMovimentacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNomeResultadoHeapSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTituloComparacoes)
-                    .addComponent(jLabelNomeResultadoQuickSortSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeResultadoMergeSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeResultadoHeapSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeResultadoTimSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeResultadoInsertionSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelNomeResultadoTimSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNomeResultadoInsertionSortComparacoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNomeResultadoQuickSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomeResultadoMergeSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomeResultadoHeapSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTituloComparacoes))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelHeapSort, jLabelInsertionSort, jLabelMergeSort, jLabelQuickSort, jLabelTimSort});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelMovimentacoes, jLabelNomeResultadoHeapSortCapacidade, jLabelNomeResultadoHeapSortComparacoes, jLabelNomeResultadoHeapSortMovimentacoes, jLabelNomeResultadoHeapSortTempo, jLabelNomeResultadoInsertionSortCapacidade, jLabelNomeResultadoInsertionSortComparacoes, jLabelNomeResultadoInsertionSortMovimentacoes, jLabelNomeResultadoInsertionSortTempo, jLabelNomeResultadoMergeSortCapacidade, jLabelNomeResultadoMergeSortComparacoes, jLabelNomeResultadoMergeSortMovimentacoes, jLabelNomeResultadoMergekSortTempo, jLabelNomeResultadoQuickSortCapacidade, jLabelNomeResultadoQuickSortMovimentacoes, jLabelNomeResultadoQuickSortSortComparacoes, jLabelNomeResultadoQuickSortTempo, jLabelNomeResultadoTimSortCapacidade, jLabelNomeResultadoTimSortComparacoes, jLabelNomeResultadoTimSortMovimentacoes, jLabelNomeResultadoTimSortTempo, jLabelTituloCapacidade, jLabelTituloComparacoes, jLabelTituloTempo});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelNomeResultadoHeapSortComparacoes, jLabelNomeResultadoHeapSortMovimentacoes, jLabelNomeResultadoHeapSortTempo, jLabelNomeResultadoInsertionSortComparacoes, jLabelNomeResultadoInsertionSortMovimentacoes, jLabelNomeResultadoInsertionSortTempo, jLabelNomeResultadoMergeSortComparacoes, jLabelNomeResultadoMergeSortMovimentacoes, jLabelNomeResultadoMergeSortTempo, jLabelNomeResultadoQuickSortComparacoes, jLabelNomeResultadoQuickSortMovimentacoes, jLabelNomeResultadoQuickSortTempo, jLabelNomeResultadoTimSortComparacoes, jLabelNomeResultadoTimSortMovimentacoes, jLabelNomeResultadoTimSortTempo, jLabelTituloComparacoes, jLabelTituloTempo});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTituloCapacidade)
-                            .addComponent(jLabelTituloTempo)
-                            .addComponent(jLabelMovimentacoes)
-                            .addComponent(jLabelTituloComparacoes))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelMovimentacoes)
+                        .addComponent(jLabelTituloAlgoritmos))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNomeResultadoQuickSortCapacidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                                .addComponent(jLabelNomeResultadoMergeSortCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoHeapSortCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoTimSortCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoInsertionSortCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelTituloComparacoes)
+                                .addGap(130, 130, 130))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNomeResultadoQuickSortTempo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelNomeResultadoMergekSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoHeapSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoTimSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoInsertionSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNomeResultadoQuickSortMovimentacoes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelNomeResultadoMergeSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoHeapSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoTimSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoInsertionSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNomeResultadoQuickSortSortComparacoes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelNomeResultadoMergeSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoHeapSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoTimSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelNomeResultadoInsertionSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelTituloAlgoritmos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelQuickSort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelMergeSort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelHeapSort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelTimSort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelInsertionSort)))
-                .addContainerGap())
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelNomeResultadoHeapSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelNomeResultadoTimSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelNomeResultadoInsertionSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelNomeResultadoMergeSortComparacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(78, 78, 78))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelNomeResultadoQuickSortComparacoes)
+                                        .addGap(104, 104, 104)))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabelTituloTempo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelNomeResultadoHeapSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelNomeResultadoHeapSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelHeapSort))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelNomeResultadoTimSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelNomeResultadoTimSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelTimSort))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelNomeResultadoInsertionSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelNomeResultadoInsertionSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelInsertionSort)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelNomeResultadoMergeSortTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelNomeResultadoQuickSortMovimentacoes)
+                                        .addComponent(jLabelMergeSort))
+                                    .addGap(78, 78, 78))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelNomeResultadoQuickSortTempo)
+                                        .addComponent(jLabelNomeResultadoMergeSortMovimentacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelQuickSort))
+                                    .addGap(104, 104, 104))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabelHeapSort, jLabelInsertionSort, jLabelMergeSort, jLabelNomeResultadoHeapSortCapacidade, jLabelNomeResultadoHeapSortComparacoes, jLabelNomeResultadoHeapSortMovimentacoes, jLabelNomeResultadoHeapSortTempo, jLabelNomeResultadoInsertionSortCapacidade, jLabelNomeResultadoInsertionSortComparacoes, jLabelNomeResultadoInsertionSortMovimentacoes, jLabelNomeResultadoInsertionSortTempo, jLabelNomeResultadoMergeSortCapacidade, jLabelNomeResultadoMergeSortComparacoes, jLabelNomeResultadoMergeSortMovimentacoes, jLabelNomeResultadoMergekSortTempo, jLabelNomeResultadoQuickSortCapacidade, jLabelNomeResultadoQuickSortMovimentacoes, jLabelNomeResultadoQuickSortSortComparacoes, jLabelNomeResultadoQuickSortTempo, jLabelNomeResultadoTimSortCapacidade, jLabelNomeResultadoTimSortComparacoes, jLabelNomeResultadoTimSortMovimentacoes, jLabelNomeResultadoTimSortTempo, jLabelQuickSort, jLabelTimSort});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabelHeapSort, jLabelInsertionSort, jLabelMergeSort, jLabelMovimentacoes, jLabelNomeResultadoHeapSortComparacoes, jLabelNomeResultadoHeapSortMovimentacoes, jLabelNomeResultadoHeapSortTempo, jLabelNomeResultadoInsertionSortComparacoes, jLabelNomeResultadoInsertionSortMovimentacoes, jLabelNomeResultadoInsertionSortTempo, jLabelNomeResultadoMergeSortComparacoes, jLabelNomeResultadoMergeSortMovimentacoes, jLabelNomeResultadoMergeSortTempo, jLabelNomeResultadoQuickSortComparacoes, jLabelNomeResultadoQuickSortMovimentacoes, jLabelNomeResultadoQuickSortTempo, jLabelNomeResultadoTimSortComparacoes, jLabelNomeResultadoTimSortMovimentacoes, jLabelNomeResultadoTimSortTempo, jLabelQuickSort, jLabelTimSort, jLabelTituloAlgoritmos, jLabelTituloComparacoes, jLabelTituloTempo});
 
         javax.swing.GroupLayout jPanelResultadosLayout = new javax.swing.GroupLayout(jPanelResultados);
         jPanelResultados.setLayout(jPanelResultadosLayout);
@@ -520,12 +514,10 @@ public class Resultados extends javax.swing.JFrame {
             jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TituloCapacidade1)
-                .addGap(237, 237, 237))
+                .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TituloCapacidade1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelResultadosLayout.setVerticalGroup(
             jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,22 +539,27 @@ public class Resultados extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonVoltar)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 537, Short.MAX_VALUE)
+                    .addComponent(jPanelResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonVoltar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanelCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -601,7 +598,6 @@ public class Resultados extends javax.swing.JFrame {
         selecionarBotaoCapacidade(jButton1000000, 5);
     }//GEN-LAST:event_jButton1000000ActionPerformed
 
-
     public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -622,7 +618,6 @@ public class Resultados extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Resultados().setVisible(true));
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,34 +638,32 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelInsertionSort;
     private javax.swing.JLabel jLabelMergeSort;
     private javax.swing.JLabel jLabelMovimentacoes;
-    private javax.swing.JLabel jLabelNomeResultadoHeapSortCapacidade;
     private javax.swing.JLabel jLabelNomeResultadoHeapSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoHeapSortMovimentacoes;
     private javax.swing.JLabel jLabelNomeResultadoHeapSortTempo;
-    private javax.swing.JLabel jLabelNomeResultadoInsertionSortCapacidade;
     private javax.swing.JLabel jLabelNomeResultadoInsertionSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoInsertionSortMovimentacoes;
     private javax.swing.JLabel jLabelNomeResultadoInsertionSortTempo;
-    private javax.swing.JLabel jLabelNomeResultadoMergeSortCapacidade;
     private javax.swing.JLabel jLabelNomeResultadoMergeSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoMergeSortMovimentacoes;
-    private javax.swing.JLabel jLabelNomeResultadoMergekSortTempo;
-    private javax.swing.JLabel jLabelNomeResultadoQuickSortCapacidade;
+    private javax.swing.JLabel jLabelNomeResultadoMergeSortTempo;
+    private javax.swing.JLabel jLabelNomeResultadoQuickSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoQuickSortMovimentacoes;
-    private javax.swing.JLabel jLabelNomeResultadoQuickSortSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoQuickSortTempo;
-    private javax.swing.JLabel jLabelNomeResultadoTimSortCapacidade;
     private javax.swing.JLabel jLabelNomeResultadoTimSortComparacoes;
     private javax.swing.JLabel jLabelNomeResultadoTimSortMovimentacoes;
     private javax.swing.JLabel jLabelNomeResultadoTimSortTempo;
     private javax.swing.JLabel jLabelQuickSort;
     private javax.swing.JLabel jLabelTimSort;
     private javax.swing.JLabel jLabelTituloAlgoritmos;
-    private javax.swing.JLabel jLabelTituloCapacidade;
     private javax.swing.JLabel jLabelTituloComparacoes;
     private javax.swing.JLabel jLabelTituloTempo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelCapacidade;
     private javax.swing.JPanel jPanelResultados;
     // End of variables declaration//GEN-END:variables
+
+    // Grupos para tornar atualização dos campos mais facil.
+    // Isso ta dando que é nulo. Por algum motivo.
+    static javax.swing.JLabel[][] rows;
 }

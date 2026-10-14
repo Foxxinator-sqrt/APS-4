@@ -11,13 +11,10 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         
-        // O ícone personalizado aparece na janela principal do sistema e também.
-        // Se quiser trocar a imagem, é só baixar outra e colocar na pasta Other Sources > resources > imagens.
-        // Depois, altere o caminho da imagem no código, por exemplo: "/imagens/icone.png".
-        // Sempre execute a interface gráfica para conferir se o ícone apareceu corretamente.
+        // O ícone personalizado aparece na janela principal do sistema e também na segunda janela Resultados.
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icone.png")).getImage());
 
-        // Se o usuário esquecer de selecionar o algoritmo ou a capacidade, a mensagem de erro deve aparecer na interface gráfica, avisando o que está faltando.
+        // Se o usuário esquecer de selecionar o algoritmo e/ou a capacidade, a mensagem de erro deve aparecer na interface gráfica, avisando o que está faltando.
         // Se ele selecionar tudo corretamente, a mensagem deve ficar escondida novamente.
         jLabelMensagemErro.setVisible(false);
     }
@@ -187,7 +184,6 @@ public class Menu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(640, 460));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(640, 460));
         setResizable(false);
 
         PainelAlgoritmos.setBackground(new java.awt.Color(255, 255, 255));
@@ -521,23 +517,24 @@ public class Menu extends javax.swing.JFrame {
         jPanelResultadosLayout.setHorizontalGroup(
             jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonResultados)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelTituloResultados)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonRun)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCancelar)
-                .addContainerGap())
-            .addGroup(jPanelResultadosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelMensagemErro, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelResultadosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelResultadosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelMensagemErro))
+                    .addGroup(jPanelResultadosLayout.createSequentialGroup()
+                        .addComponent(jButtonResultados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTituloResultados)
+                        .addGap(65, 65, 65)
+                        .addComponent(jButtonRun)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar)))
+                .addContainerGap())
         );
 
         jPanelResultadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonCancelar, jButtonRun});
@@ -553,7 +550,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jButtonCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jLabelMensagemErro)
                 .addContainerGap())
         );

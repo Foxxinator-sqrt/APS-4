@@ -5,6 +5,10 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import fenixv.ui.Menu;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 public class APS4
 {
@@ -13,6 +17,7 @@ public class APS4
     
     // Inicializa o vetor numeros, a matriz de dados, e a interface de usuário.
     public static void main(String[] args) throws IOException {
+        executandoUTF();
         numeros = lerCSV();
         dados = new int[5][15];
         Menu ui = new Menu();
@@ -46,5 +51,11 @@ public class APS4
             arr[i] = numeros[i];
         }
         return arr;
+    }
+    
+    // Configura o programa para exibir corretamente caracteres especiais usando UTF-8 de forma manual nas saídas (out) e os erros (err).
+    public static void executandoUTF(){
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8));
+        System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.err), true, StandardCharsets.UTF_8));
     }
 }

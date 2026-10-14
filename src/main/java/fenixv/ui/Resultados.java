@@ -1,6 +1,6 @@
 package fenixv.ui;
 
-import fenixv.aps4.APS4;
+import fenixv.algoritmos.Play;
 import java.awt.Color;
 
 public class Resultados extends javax.swing.JFrame {
@@ -41,21 +41,21 @@ public class Resultados extends javax.swing.JFrame {
         }
         
         for (int i = 0; i < 5; i++){
-            if (APS4.dados[i][offset] != 0){
-                rows[i][0].setText(String.format("%.3fms%n", (double) APS4.dados[i][offset] / 1_000_000.0));
-                addBarraProgresso(i, (APS4.dados[i][offset] / 1_000_000.0), idBotaoCapacidade);
+            if (Play.dados[i][offset] != 0){
+                rows[i][0].setText(String.format("%.3fms%n", (double) Play.dados[i][offset] / 1_000_000.0));
+                addBarraProgresso(i, (Play.dados[i][offset] / 1_000_000.0), idBotaoCapacidade);
             }
             else{
                 rows[i][0].setText("-");
-                resetarBarraProgresso(i, (APS4.dados[i][offset] / 1_000_000.0));
+                resetarBarraProgresso(i, (Play.dados[i][offset] / 1_000_000.0));
             }
           
-            if (APS4.dados[i][offset + 1] != 0)
-                rows[i][1].setText(Integer.toString(APS4.dados[i][offset + 1]));
+            if (Play.dados[i][offset + 1] != 0)
+                rows[i][1].setText(Integer.toString(Play.dados[i][offset + 1]));
             else rows[i][1].setText("-");
             
-            if (APS4.dados[i][offset + 2] != 0)
-                rows[i][2].setText(Integer.toString(APS4.dados[i][offset + 2]));
+            if (Play.dados[i][offset + 2] != 0)
+                rows[i][2].setText(Integer.toString(Play.dados[i][offset + 2]));
             else rows[i][2].setText("-");
         }
     }

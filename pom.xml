@@ -10,4 +10,5 @@
         <maven.compiler.release>26</maven.compiler.release>
         <exec.mainClass>fenixv.aps4.APS4</exec.mainClass>
     </properties>
+    <name>FenixV</name>
 </project>

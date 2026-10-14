@@ -1,7 +1,7 @@
 package fenixv.ui;
 
 import fenixv.algoritmos.*;
-import fenixv.aps4.APS4;
+import fenixv.algoritmos.Play;
 import java.io.IOException;
 
 public class Menu extends javax.swing.JFrame {
@@ -66,28 +66,29 @@ public class Menu extends javax.swing.JFrame {
             jLabelMensagemErro.setVisible(false);
             
             // Executa o algoritmo selecionado pelo usuário.
-            int[] vetor = APS4.gerarVetor(idBotaoCapacidade);
+            int[] vetor = Play.gerarVetor(idBotaoCapacidade);
             switch (idBotaoAlgoritmo){
                 case 1 -> {
-                    QuickSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    QuickSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Quick Sort");
                 }
                 case 2 -> {
-                    MergeSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    MergeSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Merge Sort");
                 }
                 case 3 -> {
-                    HeapSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    HeapSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Heap Sort");
                 }
                 case 4 -> {
-                    TimSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    TimSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Tim Sort");
                 }
                 case 5 -> {
-                    InsertionSort.executar(APS4.dados, idBotaoCapacidade, vetor);
+                    InsertionSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Insertion Sort");
                 }
+
             }
             
             int offset = 0;
@@ -100,10 +101,10 @@ public class Menu extends javax.swing.JFrame {
             
             // Atualiza os campos de texto com os dados resultantes.
             jLabelCapacidadeResultado.setText(Integer.toString(idBotaoCapacidade));
-            double tempo = (double) APS4.dados[idBotaoAlgoritmo - 1][offset] / 1_000_000.0;
+            double tempo = (double) Play.dados[idBotaoAlgoritmo - 1][offset] / 1_000_000.0;
             jLabelTempoResultado.setText(String.format("%.3fms%n", tempo));
-            jLabelMovimentacoesResultado.setText(Integer.toString(APS4.dados[idBotaoAlgoritmo - 1][offset + 1]));
-            jLabelComparacoesResultado.setText(Integer.toString(APS4.dados[idBotaoAlgoritmo - 1][offset + 2]));
+            jLabelMovimentacoesResultado.setText(Integer.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 1]));
+            jLabelComparacoesResultado.setText(Integer.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 2]));
         }
         else jLabelMensagemErro.setVisible(true);
     }

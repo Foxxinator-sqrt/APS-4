@@ -1,4 +1,6 @@
-package fenixv.aps4;
+package fenixv.algoritmos;
+
+
 
 import java.io.File;
 import java.util.Scanner;
@@ -10,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
-public class APS4
+public class Play
 {
     public static int[] numeros;
     public static int[][] dados;

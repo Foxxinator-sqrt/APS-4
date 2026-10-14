@@ -1,7 +1,6 @@
 package fenixv.ui;
 
 import fenixv.algoritmos.Play;
-import java.awt.Color;
 
 public class Resultados extends javax.swing.JFrame {
     

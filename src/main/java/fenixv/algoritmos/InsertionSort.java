@@ -4,10 +4,10 @@ package fenixv.algoritmos;
 public class InsertionSort {
     
     // As variaveis garantem o resultado no final da classe algoritmo.
-    static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
-    static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
+    static long movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
+    static long comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
-    public static void executar(int[][] matriz, int quantidade, int[] vetor){
+    public static long[][] executar(long[][] matriz, int quantidade, int[] vetor){
 
         movimentacoes = 0;
         comparacoes = 0;
@@ -52,9 +52,11 @@ public class InsertionSort {
             default -> {
             }
         }
-        matriz[4][offset] = (int) tempo;
+        matriz[4][offset] = tempo;
         matriz[4][offset + 1] = movimentacoes;
         matriz[4][offset + 2] = comparacoes;
+        // Retorna a matriz contendo os resultados do algoritmo pelo os números de elementos definidos.
+        return matriz;
     }
 
     //Metodo insertionSort.

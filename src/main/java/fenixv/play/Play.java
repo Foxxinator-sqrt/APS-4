@@ -1,6 +1,4 @@
-package fenixv.algoritmos;
-
-
+package fenixv.play;
 
 import java.io.File;
 import java.util.Scanner;
@@ -15,13 +13,13 @@ import java.nio.charset.StandardCharsets;
 public class Play
 {
     public static int[] numeros;
-    public static int[][] dados;
+    public static long[][] dados;
     
     // Inicializa o vetor numeros, a matriz de dados, e a interface de usuário.
     public static void main(String[] args) throws IOException {
         executandoUTF();
         numeros = lerCSV();
-        dados = new int[5][15];
+        dados = new long[5][15];
         Menu ui = new Menu();
         ui.init();
     }

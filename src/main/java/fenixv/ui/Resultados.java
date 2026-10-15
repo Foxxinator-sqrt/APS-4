@@ -1,6 +1,6 @@
 package fenixv.ui;
 
-import fenixv.algoritmos.Play;
+import fenixv.play.Play;
 
 public class Resultados extends javax.swing.JFrame {
     
@@ -50,11 +50,11 @@ public class Resultados extends javax.swing.JFrame {
             }
           
             if (Play.dados[i][offset + 1] != 0)
-                rows[i][1].setText(Integer.toString(Play.dados[i][offset + 1]));
+                rows[i][1].setText(Long.toString(Play.dados[i][offset + 1]));
             else rows[i][1].setText("-");
             
             if (Play.dados[i][offset + 2] != 0)
-                rows[i][2].setText(Integer.toString(Play.dados[i][offset + 2]));
+                rows[i][2].setText(Long.toString(Play.dados[i][offset + 2]));
             else rows[i][2].setText("-");
         }
     }
@@ -62,7 +62,7 @@ public class Resultados extends javax.swing.JFrame {
     // Adiciona os valores do tempo ms nas barras de progresso em cada algoritmo, para uma boa visualização gráfica.
     private void addBarraProgresso(int id, double valor, int capacidade){
         if(capacidade == 5 || capacidade == 4 || capacidade == 3){
-                capacidade *= 10000;
+                capacidade *= 25000;
             }
         else{
                capacidade *= 3000;

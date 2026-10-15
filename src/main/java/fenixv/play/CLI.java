@@ -1,8 +1,11 @@
-package fenixv.algoritmos;
-
-
+package fenixv.play;
 
 import fenixv.algoritmos.*;
+import fenixv.algoritmos.HeapSort;
+import fenixv.algoritmos.InsertionSort;
+import fenixv.algoritmos.MergeSort;
+import fenixv.algoritmos.QuickSort;
+import fenixv.algoritmos.TimSort;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
@@ -20,9 +23,10 @@ public class CLI {
         // Foi criado o scanner.
         boolean ativo = true;
         
+        executandoUTF();
         numeros = lerCSV();
         
-        int[][] todosElementos = new int[5][15]; // Guarda os resultados como uma forma de matriz[5][15].
+        long[][] todosElementos = new long[5][15]; // Guarda os resultados como uma forma de matriz[5][15].
         // 5 linhas representam os 5 algoritmos e 15 colunas representam os resultados de cada capacidade de forma organizada.
         
         Scanner sc = new Scanner(System.in);
@@ -64,7 +68,7 @@ public class CLI {
         sc.close();
     }
     
-    public static void quantidadeElementos(Scanner sc, int opcao, int[][] matriz) throws IOException {
+    public static void quantidadeElementos(Scanner sc, int opcao, long[][] matriz) throws IOException {
         System.out.println("\nEscolha a capacidade\n");
         System.out.println(" [1] - 1.000 elementos");
         System.out.println(" [2] - 10.000 elementos");
@@ -113,7 +117,7 @@ public class CLI {
         }
     }
 
-    public static void exibir(Scanner sc, int[][] matriz){
+    public static void exibir(Scanner sc, long[][] matriz){
         // Mostra os resultados dos algoritmos organizados em matriz.
         do {
             System.out.println("\nEscolha o tamanho para visualizar todos os algoritmos\n");

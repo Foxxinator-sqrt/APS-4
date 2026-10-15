@@ -1,7 +1,7 @@
 package fenixv.ui;
 
 import fenixv.algoritmos.*;
-import fenixv.algoritmos.Play;
+import fenixv.play.Play;
 import java.io.IOException;
 
 public class Menu extends javax.swing.JFrame {
@@ -103,8 +103,8 @@ public class Menu extends javax.swing.JFrame {
             jLabelCapacidadeResultado.setText(Integer.toString(idBotaoCapacidade));
             double tempo = (double) Play.dados[idBotaoAlgoritmo - 1][offset] / 1_000_000.0;
             jLabelTempoResultado.setText(String.format("%.3fms%n", tempo));
-            jLabelMovimentacoesResultado.setText(Integer.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 1]));
-            jLabelComparacoesResultado.setText(Integer.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 2]));
+            jLabelMovimentacoesResultado.setText(Long.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 1]));
+            jLabelComparacoesResultado.setText(Long.toString(Play.dados[idBotaoAlgoritmo - 1][offset + 2]));
         }
         else jLabelMensagemErro.setVisible(true);
     }

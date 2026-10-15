@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>fenixv</groupId>
-    <artifactId>aps4</artifactId>
+    <artifactId>play</artifactId>
     <version>0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>26</maven.compiler.release>
-        <exec.mainClass>fenixv.aps4.APS4</exec.mainClass>
+        <exec.mainClass>fenixv.play.Play</exec.mainClass>
     </properties>
     <name>FenixV</name>
 </project>

@@ -2,7 +2,8 @@ package fenixv.algoritmos;
 
 // 4º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 3)
 public class TimSort {
-
+    
+    // Define o tamanho de cada trecho que será ordenado por inserção.
     static final int RUN = 32;
 
     // As variaveis garantem o resultado no final da classe algoritmo.
@@ -57,11 +58,14 @@ public class TimSort {
         return matriz;
     }
 
+    // Ordena pequenos trechos do vetor usando o método de inserção.
+// Os elementos maiores são deslocados para a direita até encontrar a posição correta.
     public static void insercao(int[] v, int inicio, int fim) {
 
         for (int i = inicio + 1; i <= fim; i++) {
-            int temporario = v[i];
+            int temporario = v[i]; // Guarda o elemento atual.
             int j = i - 1;
+            // Compara e desloca os elementos maiores.
             while (j >= inicio) {
                 comparacoes++;
 
@@ -72,11 +76,13 @@ public class TimSort {
                 movimentacoes++;
                 j--;
             }
-            v[j + 1] = temporario;
+            v[j + 1] = temporario; // Insere o elemento na posição correta.
             movimentacoes++;
         }
     }
 
+    // Junta dois trechos já ordenados em um único trecho.
+    // Utiliza vetores auxiliares para comparar e organizar os elementos.
     public static void mesclar(int[] v, int inicio, int meio, int fim) {
 
         int tamanhoEsquerda = meio - inicio + 1;
@@ -85,6 +91,7 @@ public class TimSort {
         int [] esquerda = new int [tamanhoEsquerda];
         int [] direita = new int[tamanhoDireita];
 
+        // Copia os elementos para os vetores auxiliares.
         for (int i = 0; i < tamanhoEsquerda; i++) {
             esquerda[i] = v[inicio + i];
         }
@@ -96,6 +103,7 @@ public class TimSort {
         int j = 0;
         int k = inicio;
 
+        // Compara os elementos e coloca o menor no vetor original.
         while (i < tamanhoEsquerda && j < tamanhoDireita) {
             comparacoes++;
 
@@ -109,6 +117,7 @@ public class TimSort {
             movimentacoes++;
             k++;
         }
+        // Copia os elementos que sobraram.
         while (i < tamanhoEsquerda) {
             v[k] = esquerda[i];
             i++;
@@ -123,14 +132,17 @@ public class TimSort {
         }
     }
 
+    // Executa o TimSort, ordenando pequenos trechos primeiro.
+    // Depois, combina esses trechos até ordenar o vetor inteiro.
     public static void timSort(int[] v, int tamanho) {
 
-        for (int inicio = 0; inicio < tamanho; inicio += RUN) {
+        // Divide o vetor em trechos RUN e ordena cada um por inserção.
+        for(int inicio = 0; inicio < tamanho; inicio += RUN){
             int fim = Math.min(inicio + RUN - 1, tamanho - 1);
             insercao(v, inicio, fim);
         }
-
-        for (int tamanhoRun = RUN; tamanhoRun < tamanho; tamanhoRun *= 2) {
+        // Junta os trechos ordenados, aumentando o tamanho a cada etapa.
+        for(int tamanhoRun = RUN; tamanhoRun < tamanho; tamanhoRun *= 2){
             for (int inicio = 0; inicio < tamanho; inicio += 2 * tamanhoRun) {
                 int meio = inicio + tamanhoRun - 1;
                 if (meio >= tamanho - 1) {

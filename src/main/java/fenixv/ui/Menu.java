@@ -80,23 +80,23 @@ public class Menu extends javax.swing.JFrame {
             switch (idBotaoAlgoritmo){
                 case 1 -> {
                     QuickSort.executar(Play.dados, idBotaoCapacidade, vetor);
-                    jLabelNomeResultado.setText("Quick Sort");
+                    jLabelNomeResultado.setText("QuickSort");
                 }
                 case 2 -> {
                     MergeSort.executar(Play.dados, idBotaoCapacidade, vetor);
-                    jLabelNomeResultado.setText("Merge Sort");
+                    jLabelNomeResultado.setText("MergeSort");
                 }
                 case 3 -> {
                     HeapSort.executar(Play.dados, idBotaoCapacidade, vetor);
-                    jLabelNomeResultado.setText("Heap Sort");
+                    jLabelNomeResultado.setText("HeapSort");
                 }
                 case 4 -> {
                     TimSort.executar(Play.dados, idBotaoCapacidade, vetor);
-                    jLabelNomeResultado.setText("Tim Sort");
+                    jLabelNomeResultado.setText("TimSort");
                 }
                 case 5 -> {
                     InsertionSort.executar(Play.dados, idBotaoCapacidade, vetor);
-                    jLabelNomeResultado.setText("Insertion Sort");
+                    jLabelNomeResultado.setText("InsertionSort");
                 }
             }
             

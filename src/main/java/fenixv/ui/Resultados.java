@@ -60,7 +60,7 @@ public class Resultados extends javax.swing.JFrame {
     // Atualiza a barra de progresso, especificada por id, para exibir o tempo de um algoritmo.
     private void atualizarBarra(int id, double valor, int capacidade){
         if(capacidade >= 3) capacidade *= 25000;
-        else capacidade *= 3000;
+        else capacidade *= 3500;
         
         barras[id].setMaximum(capacidade);
         barras[id].setValue((int) (valor * 1000));

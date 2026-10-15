@@ -22,7 +22,11 @@ public class Menu extends javax.swing.JFrame {
     private int idBotaoAlgoritmo = 0;
     private int idBotaoCapacidade = 0;
     
-    // Esse método funciona quando usuário escolhe qual o algoritmo que ele quer.
+    /*  Esse método é usado por todos os botões de algoritmo.
+        Ele recebe a referencia ao botão pressionado, e o seu id.
+        Usando esses parametros para alterar a cor do botão,
+        e armazenar o valor do botão selecionado, respectivamente.
+    */
     public void selecionarBotaoAlgoritimos(javax.swing.JButton botaoSelecionado, int idBotaoAlgoritimo){
         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
         java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
@@ -37,7 +41,10 @@ public class Menu extends javax.swing.JFrame {
         this.idBotaoAlgoritmo = idBotaoAlgoritimo;
     }
     
-    // Esse método funciona quando usuário escolhe qual a capacidade.
+    /*  Esse método é usado por todos os botões de capacidade.
+        Assim como o metodo acima, recebe uma referencia ao botão que foi ativado, e seu id.
+        Usando esses parâmetros para alterar a cor do botão, e determinar o valor da capacidade selecionada.
+    */
     public void selecionarBotaoCapacidade(javax.swing.JButton botaoSelecionado, int idBotaoCapacidade){
         java.awt.Color corPadrao = new java.awt.Color(255,255,255);
         java.awt.Color corSelecionado = new java.awt.Color(0,180,80);
@@ -60,7 +67,10 @@ public class Menu extends javax.swing.JFrame {
         this.idBotaoCapacidade = idBotaoCapacidade;
     }
     
-    // Executado quando o botão run é pressionado.
+    /*  Método chamado quando o botão "Run" é pressionado.
+        Ele usa as variaveis idBotaoAlgoritmo e idBotaoCapacidade para
+        Determinar qual função de ordenação deve ser chamada, e com qual capacidade,
+        alem de atualizar as labels com os dados do algoritmo executado. */
     public void executarRun(int idBotaoAlgoritmo, int idBotaoCapacidade){
         if(idBotaoAlgoritmo != 0 && idBotaoCapacidade != 0){
             jLabelMensagemErro.setVisible(false);
@@ -88,7 +98,6 @@ public class Menu extends javax.swing.JFrame {
                     InsertionSort.executar(Play.dados, idBotaoCapacidade, vetor);
                     jLabelNomeResultado.setText("Insertion Sort");
                 }
-
             }
             
             int offset = 0;
@@ -99,7 +108,7 @@ public class Menu extends javax.swing.JFrame {
                 case 1000000 -> offset = 12;
             }
             
-            // Atualiza os campos de texto com os dados resultantes.
+            // Atualiza as labels com os dados resultantes.
             jLabelCapacidadeResultado.setText(Integer.toString(idBotaoCapacidade));
             double tempo = (double) Play.dados[idBotaoAlgoritmo - 1][offset] / 1_000_000.0;
             jLabelTempoResultado.setText(String.format("%.3fms%n", tempo));
@@ -551,7 +560,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jButtonCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelResultadosAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabelMensagemErro)
                 .addContainerGap())
         );
@@ -622,7 +631,6 @@ public class Menu extends javax.swing.JFrame {
         selecionarBotaoCapacidade(jButton1000000, 5);
     }//GEN-LAST:event_jButton1000000ActionPerformed
 
-    
     private void jButtonResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultadosActionPerformed
         Resultados tela = new Resultados();
         tela.setVisible(true);

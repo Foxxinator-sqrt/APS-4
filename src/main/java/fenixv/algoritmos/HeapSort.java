@@ -2,8 +2,6 @@ package fenixv.algoritmos;
 
 // 3º DA ORDEM DE EXECUÇÃO (ID NA MATRIZ: 2)
 public class HeapSort {
-    
-    // As variaveis garantem o resultado no final da classe algoritmo.
     static int movimentacoes = 0; // Variável que armazena a quantidade de movimentações decorrer do método que pode deslocar ou trocar de posições.
     static int comparacoes = 0; // Variável que armazena a quantidade de elementos que são comparados durante a ordenação da lista.
 
@@ -11,26 +9,14 @@ public class HeapSort {
         movimentacoes = 0;
         comparacoes = 0;
         
-        // Iniciando a contagem usando o método nanoTime() em nano segundos.
+        // Grava-se o tempo atual, em nanosegundos, antês e após a execução do algoritmo, para que seja calculada o tem
         long inicio = System.nanoTime();
-        // Executando o algoritmo de HeapSort.
         vetor = heapSort(vetor);
-        // Finalizando a contagem do tempo de execução.
         long fim = System.nanoTime();
-
-         // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo HeapSort.
-        if (quantidade < 1001){
-            System.out.println();
-            for (int n : vetor) {
-                System.out.print(n + " ");
-            }
-        }
         
         // Exibe os resultados obtidos durante a execução do algoritmo.
-        // A quantidade de movimentações realizadas e a quantidade de comparações ao total.
+        // (A divisão por 1.000.000 converte o resultado de nanosegundos para milissegundos.)
         System.out.println();
-        // fim - inicio calcula o tempo total de execução todo algoritmo em nanosegundos antes da conversão.
-        // A divisão por 1.000.000 converte o resultado de nanosegundos para milissegundos.
         long tempo = (fim - inicio);
         System.out.printf("\nTempo: %.3fms%n", (tempo / 1_000_000.0));
         System.out.println("Movimentações: " + movimentacoes);
@@ -44,13 +30,11 @@ public class HeapSort {
             case 100000 -> offset = 6;
             case 500000 -> offset = 9;
             case 1000000 -> offset = 12;
-            default -> {
-            }
         }
         matriz[2][offset] = (int)tempo;
         matriz[2][offset + 1] = movimentacoes;
         matriz[2][offset + 2] = comparacoes;
-        // Retorna a matriz contendo os resultados do algoritmo pelo os números de elementos definidos.
+        
         return matriz;
     }
     

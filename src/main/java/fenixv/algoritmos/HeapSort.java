@@ -14,7 +14,7 @@ public class HeapSort {
         vetor = heapSort(vetor);
         long fim = System.nanoTime();
         
-        // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo MergeSoft.
+        // Mostra o resultado do vetor completo já modificado em ordem crescente ao final da execução do algoritimo HeapSoft.
         if (quantidade < 1001){
             System.out.println();
             for (int n : vetor) {
